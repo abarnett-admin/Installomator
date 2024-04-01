@@ -5572,7 +5572,7 @@ microsoftteams)
         "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
-    updateToolArguments=( --install --apps TEAMS10 ) # --wait 600 #TEAM01
+    updateToolArguments=( --install --apps TEAMS10 ) # --wait 600 # TEAM01
     ;;
 microsoftteamsnew)
     name="Microsoft Teams (work or school)"
