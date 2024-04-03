@@ -5577,8 +5577,9 @@ microsoftteamsnew)
     name="Microsoft Teams (work or school)"
     type="pkg"
     #packageID="com.microsoft.teams2"
-    downloadURL="https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning"
-    html_content=$(curl -s "${downloadURL}")
+    MSTNVersion="https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning"
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=2249065"
+    html_content=$(curl -s "${MSTNVersion}")
     # Extract the first instance of the "mac-version-history" section
     mac_version_history=$(echo "$html_content" | awk '/mac-version-history/{flag=1}/<\/table>/ && flag{print; exit}flag')
     # Filter for the line containing "Rolling Out"
