@@ -335,7 +335,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
         rosetta2=no
     fi
 fi
-VERSION="11.11"
+VERSION="11.12"
 VERSIONDATE="2024-04-05"
 
 # MARK: Functions
@@ -4226,6 +4226,7 @@ jamfcpr)
     downloadURL="$(downloadURLFromGit BIG-RAT jamfcpr)"
     appNewVersion="$(versionFromGit BIG-RAT jamfcpr)"
     expectedTeamID="PS2F6S478M"
+    versionKey="CFBundleShortVersionString"
     ;;
 jamfmigrator)
     name="jamf-migrator"
