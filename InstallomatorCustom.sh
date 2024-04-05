@@ -335,7 +335,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
         rosetta2=no
     fi
 fi
-VERSION="11.10"
+VERSION="11.11"
 VERSIONDATE="2024-04-05"
 
 # MARK: Functions
@@ -5590,7 +5590,7 @@ microsoftteamsnew)
     appNewVersion=$(echo "$rolling_out_line" | sed 's/.*>\(.*\)<.*/\1/')
     # No version in download path, so grab it from homepage
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.teams2.standalone"]/version' 2>/dev/null | sed -E 's/<version>([0-9.]*) .*/\1/')
-    #versionKey="CFBundleGetInfoString"
+    versionKey="CFBundleShortVersionString"
     expectedTeamID="UBF8T346G9"
     blockingProcesses=( "MSTeams" "Microsoft Teams (work or school)" "Microsoft Teams" "Microsoft Teams WebView" "Microsoft Teams Launcher" "Microsoft Teams (work preview)")
     # msupdate requires a PPPC profile pushed out from Jamf to work, https://github.com/pbowden-msft/MobileConfigs/tree/master/Jamf-MSUpdate
