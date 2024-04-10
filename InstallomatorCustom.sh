@@ -335,8 +335,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
         rosetta2=no
     fi
 fi
-VERSION="11.12"
-VERSIONDATE="2024-04-05"
+VERSION="11.13"
+VERSIONDATE="2024-04-10"
 
 # MARK: Functions
 
@@ -7199,7 +7199,7 @@ spotify)
     elif [[ $(arch) == i386 ]]; then
         downloadURL="https://download.scdn.co/Spotify.dmg"
     fi
-    # appNewVersion=$(curl -fs https://www.spotify.com/us/opensource/ | cat | grep -o "<td>.*.</td>" | head -1 | cut -d ">" -f2 | cut -d "<" -f1) # does not result in the same version as downloaded
+    appNewVersion=$(curl -fs https://www.spotify.com/us/opensource/ | grep -m 1 -o '<td class="TableCell__TableCellElement-sc-1nn7cfv-0 A-DkAn">[^<]*</td>' | sed 's/<[^>]*>//g' | head -n 1) # does not result in the same version as downloaded
     expectedTeamID="2FNC3A47ZF"
     ;;
 sqlpropostgres)
