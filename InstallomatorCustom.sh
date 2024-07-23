@@ -335,7 +335,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
         rosetta2=no
     fi
 fi
-VERSION="12.4"
+VERSION="12.5"
 VERSIONDATE="2024-07-23"
 
 # MARK: Functions
@@ -5817,30 +5817,21 @@ microsoftteams)
     updateToolArguments=( --install --apps TEAMS10 ) # --wait 600 #TEAM01
     ;;
 microsoftteamsnew)
-    name="Microsoft Teams (work or school)"
+    name="Microsoft Teams"
     type="pkg"
-    #packageID="com.microsoft.teams2"
-    MSTNVersion="https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=2249065"
-    html_content=$(curl -s "${MSTNVersion}")
-    # Extract the first instance of the "mac-version-history" section
-    mac_version_history=$(echo "$html_content" | awk '/mac-version-history/{flag=1}/<\/table>/ && flag{print; exit}flag')
-    # Filter for the line containing "Rolling Out"
-    rolling_out_line=$(echo "$mac_version_history" | grep -A 1 "Rolling out" | tail -n 1)   
-    #Extract the version number from the Rolling Out line using sed
-    appNewVersion=$(echo "$rolling_out_line" | sed 's/.*>\(.*\)<.*/\1/')
-    # No version in download path, so grab it from homepage
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.teams2.standalone"]/version' 2>/dev/null | sed -E 's/<version>([0-9.]*) .*/\1/')
-    versionKey="CFBundleShortVersionString"
+    packageID="com.microsoft.teams2"
+    # Fetch the latest version number from the Microsoft documentation page
+    appNewVersion=$(curl -s https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning | awk '/<h4 id="mac-version-history">Mac version history<\/h4>/,/<\/table>/' | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+    downloadURL="https://statics.teams.cdn.office.net/production-osx/${appNewVersion}/MicrosoftTeams.pkg"
     expectedTeamID="UBF8T346G9"
-    blockingProcesses=( "MSTeams" "Microsoft Teams (work or school)" "Microsoft Teams" "Microsoft Teams WebView" "Microsoft Teams Launcher" "Microsoft Teams (work preview)")
+    blockingProcesses=( Teams MSTeams "Microsoft Teams" "Microsoft Teams WebView" "Microsoft Teams WebView Helper" "Microsoft Teams Launcher" "Microsoft Teams (work preview)" "Microsoft Teams classic Helper" "com.microsoft.teams2.respawn")
     # msupdate requires a PPPC profile pushed out from Jamf to work, https://github.com/pbowden-msft/MobileConfigs/tree/master/Jamf-MSUpdate
     if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
         printlog "Running msupdate --list"
         "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
-    updateToolArguments=( --install --apps TEAMS21 ) # --wait 600 # TEAM01
+    updateToolArguments=( --install --apps TEAMS21 ) # --wait 600
     ;;
 microsoftteamsreset)
     name="Microsoft Teams Reset"
