@@ -116,7 +116,7 @@ SYSTEMOWNER=0
 #                  Useful for shared machines.
 
 # install behavior
-INSTALL=""
+INSTALL="force"
 # options:
 #  -               When not set, the software will only be installed
 #                  if it is newer/different in version
