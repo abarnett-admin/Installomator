@@ -216,7 +216,7 @@ if [[ -n $appNewVersion ]]; then
     printlog "Latest version of $name is $appNewVersion"
     if [[ $appversion == $appNewVersion ]]; then
         if [[ $DEBUG -ne 1 ]]; then
-            printlog "There is no newer version available."
+            printlog "same as installed."
             if [[ $INSTALL != "force" ]]; then
                 message="$name, version $appNewVersion, is the latest version."
                 if [[ $currentUser != "loginwindow" && $NOTIFY == "all" ]]; then
