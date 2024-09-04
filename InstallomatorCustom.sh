@@ -118,7 +118,7 @@ SYSTEMOWNER=0
 #                  Useful for shared machines.
 
 # install behavior
-INSTALL="force"
+INSTALL=""
 # options:
 #  -               When not set, the software will only be installed
 #                  if it is newer/different in version
@@ -337,8 +337,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
         rosetta2=no
     fi
 fi
-VERSION="12.9"
-VERSIONDATE="2024-09-03"
+VERSION="12.10"
+VERSIONDATE="2024-09-04"
 
 # MARK: Functions
 
