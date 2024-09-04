@@ -337,7 +337,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
         rosetta2=no
     fi
 fi
-VERSION="12.10"
+VERSION="12.11"
 VERSIONDATE="2024-09-04"
 
 # MARK: Functions
@@ -2238,7 +2238,7 @@ backgroundmusic)
     ;;
 backgrounds)
     name="Backgrounds"
-    type="zip"
+    type="pkg"
     downloadURL="$(downloadURLFromGit SAP backgrounds)"
     appNewVersion="$(versionFromGit SAP backgrounds)"
     expectedTeamID="7R5ZEU67FQ"
