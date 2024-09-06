@@ -337,8 +337,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
         rosetta2=no
     fi
 fi
-VERSION="12.11"
-VERSIONDATE="2024-09-04"
+VERSION="12.12"
+VERSIONDATE="2024-09-06"
 
 # MARK: Functions
 
@@ -3919,9 +3919,9 @@ gimp)
     name="GIMP"
     type="dmg"
     if [[ $(arch) == "arm64" ]]; then
-        downloadURL=https://$(curl -fs https://www.gimp.org/downloads/ | grep -m 1 -o "download.*gimp-.*-arm64.dmg")
+        downloadURL=https://$(curl -fs https://www.gimp.org/downloads/ | grep -m 1 -o 'download\.gimp\.org\/gimp\/v[0-9\.]*\/macos\/gimp-[0-9\.]*-arm64.*\.dmg\"' | tr -d '"')
     elif [[ $(arch) == "i386" ]]; then
-        downloadURL=https://$(curl -fs https://www.gimp.org/downloads/ | grep -m 1 -o "download.*gimp-.*-x86_64.dmg")
+        downloadURL=https://$(curl -fs https://www.gimp.org/downloads/ | grep -m 1 -o 'download\.gimp\.org\/gimp\/v[0-9\.]*\/macos\/gimp-[0-9\.]*-x86_64.*\.dmg\"' | tr -d '"')
     fi
     appNewVersion=$(echo $downloadURL | cut -d "-" -f 2)
     expectedTeamID="T25BQ8HSJF"
@@ -8511,10 +8511,9 @@ vmwarefusion)
 vmwarehorizonclient)
     name="VMware Horizon Client"
     type="pkgInDmg"
-    downloadGroup=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/products/getRelatedDLGList?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&version=horizon_8&dlgType=PRODUCT_BINARY" | grep -o '[^"]*_MAC_[^"]*')
-    fileName=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&dlgType=PRODUCT_BINARY&downloadGroup=${downloadGroup}" | grep -o '"fileName":"[^"]*"' | cut -d: -f2 | sed 's/"//g')
-    downloadURL="https://download3.vmware.com/software/$downloadGroup/${fileName}"
-    appNewVersion=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=${downloadGroup}" | grep -o '[^"]*\.dmg[^"]*' | sed 's/.*-\(.*\)-.*/\1/')
+	downloadFiles=$(getJSONValue "$(curl -fsL 'https://customerconnect.omnissa.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=CART25FQ2_MAC_2406&productId=1027&rPId=118763' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15')" downloadFiles)
+    downloadURL=$(echo $downloadFiles | grep thirdPartyDownloadUrl | cut -d\" -f4 | xargs)
+    appNewVersion=$(echo $downloadFiles | grep fileName | cut -d- -f5 | xargs)
     expectedTeamID="EG7KH642X6"
     ;;
 vonagebusiness)
