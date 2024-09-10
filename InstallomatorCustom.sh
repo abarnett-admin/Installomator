@@ -3992,6 +3992,7 @@ googlechrome)
     updateTool="/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/MacOS/GoogleSoftwareUpdateAgent"
     updateToolArguments=( -runMode oneshot -userInitiated YES )
     updateToolRunAsCurrentUser=1
+    ;;
 googlechromeenterprise)
     name="Google Chrome"
     type="pkg"
