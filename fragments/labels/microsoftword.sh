@@ -1,6 +1,7 @@
 microsoftword)
     name="Microsoft Word"
     type="pkg"
+    versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525134"
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.word.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
     appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_.*pkg" | cut -d "_" -f 3 | cut -d "." -f 1-2)
