@@ -338,7 +338,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.15"
+VERSION="12.16"
 VERSIONDATE="2024-09-10"
 
 # MARK: Functions
@@ -3612,13 +3612,12 @@ findanyfile)
     ;;
 firefox)
     name="Firefox"
-    type="dmg"
-    downloadURL="https://download.mozilla.org/?product=firefox-latest&os=osx&lang=en-US"
+    type="pkg"
+    downloadURL="https://download.mozilla.org/?product=firefox-pkg-latest-ssl&os=osx&lang=en-US"
     firefoxVersions=$(curl -fs "https://product-details.mozilla.org/1.0/firefox_versions.json")
     appNewVersion=$(getJSONValue "$firefoxVersions" "LATEST_FIREFOX_VERSION")
     expectedTeamID="43AQ936H96"
     blockingProcesses=( firefox )
-    printlog "WARNING for ERROR: Label firefox and firefox_intl should not be used. Instead use firefoxpkg and firefoxpkg_intl as per recommendations from Firefox. It's not fully certain that the app actually gets updated here. firefoxpkg and firefoxpkg_intl will have built in updates and make sure the client is updated in the future." REQ
     ;;
 firefox_da)
     name="Firefox"
@@ -3981,12 +3980,18 @@ googleadseditor)
     ;;
 googlechrome)
     name="Google Chrome"
-    type="dmg"
-    downloadURL="https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg"
-    appNewVersion=$(curl -s https://omahaproxy.appspot.com/history | awk -F',' '/mac_arm64,stable/{print $3; exit}')
+    type="pkg"
+    versionKey="CFBundleShortVersionString"
+    #
+    # Note: this url acknowledges that you accept the terms of service
+    # https://support.google.com/chrome/a/answer/9915669
+    #
+    downloadURL="https://dl.google.com/chrome/mac/stable/accept_tos%3Dhttps%253A%252F%252Fwww.google.com%252Fintl%252Fen_ph%252Fchrome%252Fterms%252F%26_and_accept_tos%3Dhttps%253A%252F%252Fpolicies.google.com%252Fterms/googlechrome.pkg"
+    appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction>0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
-    printlog "WARNING for ERROR: Label googlechrome should not be used. Instead use googlechromepkg as per recommendations from Google. It's not fully certain that the app actually gets updated here. googlechromepkg will have built in updates and make sure the client is updated in the future." REQ
-    ;;
+    updateTool="/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/MacOS/GoogleSoftwareUpdateAgent"
+    updateToolArguments=( -runMode oneshot -userInitiated YES )
+    updateToolRunAsCurrentUser=1
 googlechromeenterprise)
     name="Google Chrome"
     type="pkg"
