@@ -338,8 +338,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.17"
-VERSIONDATE="2024-09-10"
+VERSION="12.18"
+VERSIONDATE="2024-10-03"
 
 # MARK: Functions
 
@@ -5538,15 +5538,20 @@ merlinproject)
     ;;
 microsoftautoupdate)
     name="Microsoft AutoUpdate"
-    type="pkg"
+    type="updateronly"
+    continueBlocking="true"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=830196"
     versionKey="CFBundleVersion"
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "Microsoft_AutoUpdate.*pkg" | sed -E 's/[a-zA-Z_]*_([0-9.]*)_.*/\1/g')
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     # commented the updatetool for MSAutoupdate, because when Autoupdate is really
     # old or broken, you want to force a new install
-    #updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
-    #updateToolArguments=( --install --apps MSau04 )
+    if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
+        printlog "Running msupdate --list"
+        "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list
+    fi
+    updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
+    updateToolArguments=( --install --apps MSau04 )
     ;;
 microsoftazuredatastudio|\
 azuredatastudio)
@@ -5573,9 +5578,9 @@ microsoftazurestorageexplorer)
 microsoftcompanyportal)
     name="Company Portal"
     type="pkg"
+    continueBlocking="true"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=869655"
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.intunecompanyportal.standalone"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/CompanyPortal_.*pkg" | cut -d "_" -f 2 | cut -d "-" -f 1)
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/CompanyPortal_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
         printlog "Running msupdate --list"
@@ -5588,6 +5593,7 @@ microsoftdefender|\
 microsoftdefenderatp)
     name="Microsoft Defender"
     type="pkg"
+    continueBlocking="true"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=2097502"
     appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.defender.standalone"]/version' 2>/dev/null | sed -E 's/<version>([0-9.]*) .*/\1/')
     # No version number in download url
@@ -5604,10 +5610,10 @@ microsoftedgeconsumerstable|\
 microsoftedgeenterprisestable)
     name="Microsoft Edge"
     type="pkg"
-    versionKey="CFBundleVersion"
+    continueBlocking="true"
+    versionKey="CFBundleShortVersionString"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=2093504"
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.edge"]/cfbundleversion' 2>/dev/null | sed -E 's/<cfbundleversion>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/MicrosoftEdge.*pkg" | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g')
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
         printlog "Running msupdate --list"
@@ -5619,10 +5625,10 @@ microsoftedgeenterprisestable)
 microsoftexcel)
     name="Microsoft Excel"
     type="pkg"
+    continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525135"
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.excel.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_.*pkg" | cut -d "_" -f 3 | cut -d "." -f 1-3)
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
         printlog "Running msupdate --list"
@@ -5659,7 +5665,7 @@ microsoftoffice365)
     type="pkg"
     packageID="com.microsoft.pkg.licensing"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525133"
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_.*pkg" | cut -d "_" -f 5)
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/Microsoft_365_and_Office_(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     # using MS PowerPoint as the 'stand-in' for the entire suite
     #appName="Microsoft PowerPoint.app"
@@ -5675,7 +5681,7 @@ microsoftofficebusinesspro)
     name="MicrosoftOfficeBusinessPro"
     type="pkg"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=2009112"
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_.*pkg" | cut -d "_" -f 3)
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/Microsoft_365_and_Office_(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     # using MS PowerPoint as the 'stand-in' for the entire suite
     appName="Microsoft PowerPoint.app"
@@ -5706,10 +5712,11 @@ microsoftonedrive)
     # https://support.microsoft.com/en-us/office/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0#OSVersion=Mac
     name="OneDrive"
     type="pkg"
+    continueBlocking="true"
     versionKey="CFBundleShortVersionString"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=823060"
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.onedrive.standalone"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | cut -d "/" -f 6 | cut -d "." -f 1-3)
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Installers/.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
         printlog "Running msupdate --list"
@@ -5727,11 +5734,11 @@ microsoftonedrivereset)
     ;;
 microsoftonenote)
     name="Microsoft OneNote"
-    type="pkg"
+    type="updateronly"
+    continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=820886"
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.onenote.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_.*pkg" | cut -d "_" -f 3 | cut -d "." -f 1-2)
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
         printlog "Running msupdate --list"
@@ -5750,6 +5757,7 @@ microsoftonenotereset)
 microsoftoutlook)
     name="Microsoft Outlook"
     type="pkg"
+    continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525137"
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.outlook.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
@@ -5779,10 +5787,10 @@ microsoftoutlookreset)
 microsoftpowerpoint)
     name="Microsoft PowerPoint"
     type="pkg"
+    continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525136"
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.powerpoint.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_.*pkg" | cut -d "_" -f 3 | cut -d "." -f 1-3)
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"
     if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
         printlog "Running msupdate --list"
@@ -5797,20 +5805,6 @@ microsoftpowerpointreset)
     packageID="com.microsoft.reset.PowerPoint"
     downloadURL="https://office-reset.com"$(curl -fs https://office-reset.com/macadmins/ | grep -o -i "href.*\".*\"*PowerPoint_Reset.*.pkg" | cut -d '"' -f2)
     expectedTeamID="QGS93ZLCU7"
-    ;;
-microsoftremotedesktop)
-    name="Microsoft Remote Desktop"
-    type="pkg"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=868963"
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.remotedesktop.standalone"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_Remote_Desktop.*pkg" | cut -d "_" -f 4)
-    expectedTeamID="UBF8T346G9"
-    if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
-        printlog "Running msupdate --list"
-        "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list
-    fi
-    updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
-    updateToolArguments=( --install --apps MSRD10 )
     ;;
 microsoftsharepointplugin)
     # Microsoft has marked this "oldpackage", should probably not be used anymore
@@ -5846,6 +5840,7 @@ microsoftteamsclassic|\
 microsoftteams)
     name="Microsoft Teams classic"
     type="pkg"
+    continueBlocking="true"
     #packageID="com.microsoft.teams"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=869428"
     appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i "^location" | tail -1 | cut -d "/" -f5)
@@ -5863,6 +5858,7 @@ microsoftteams)
 microsoftteamsnew)
     name="Microsoft Teams"
     type="pkg"
+    continueBlocking="true"
     packageID="com.microsoft.teams2"
     # Fetch the latest version number from the Microsoft documentation page
     appNewVersion=$(curl -s https://learn.microsoft.com/en-us/officeupdates/teams-app-versioning | awk '/<h4 id="mac-version-history">Mac version history<\/h4>/,/<\/table>/' | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
@@ -5894,9 +5890,19 @@ visualstudiocode)
     appName="Visual Studio Code.app"
     blockingProcesses=( Code )
     ;;
+microsoftwindowsapp)
+    name="Windows App"
+    type="pkg"
+    packageID="com.microsoft.rdc.macos"
+    blockingProcesses=( "Windows App" "Microsoft Remote Desktop" )
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=868963"
+    appNewVersion="$(curl -is "${downloadURL}" | grep "Location" | grep -o '[0-9][0-9]\.[0-9]*\.[0-9]*')"
+    expectedTeamID="UBF8T346G9"
+    ;;
 microsoftword)
     name="Microsoft Word"
-    type="pkg"
+    type="updateronly"
+    continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525134"
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.word.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
@@ -8709,10 +8715,11 @@ yubicoauthenticator)
     name="Yubico Authenticator"
     type="dmg"
     downloadURL="https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-latest-mac.dmg"
-    appNewVersion=""
+    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i "^location" | grep -Eo "[1-9][0-9\.]*" )
     expectedTeamID="LQA3CS5MM7"
+    versionKey="CFBundleShortVersionString"
     ;;
-yubikeymanager)
+yubikeymanagerqt)
     name="YubiKey Manager"
     type="pkg"
     appCustomVersion(){/usr/local/ykman/ykman -v | awk '{print $5}'}
@@ -8721,12 +8728,13 @@ yubikeymanager)
     expectedTeamID="LQA3CS5MM7"
     #CLI for YubikeyManager which is not installed via the QT version.
     ;;
-yubikeymanagerqt)
+yubikeymanager)
     name="YubiKey Manager GUI"
     type="pkg"
     downloadURL="https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-latest-mac.pkg"
     appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i "^location" | grep -Eo "[1-9][0-9\.]*" )
     expectedTeamID="LQA3CS5MM7"
+    versionKey="CFBundleShortVersionString"
     ;;
 zappy)
     name="Zappy"
@@ -9044,6 +9052,7 @@ fi
 printlog "BLOCKING_PROCESS_ACTION=${BLOCKING_PROCESS_ACTION}"
 printlog "NOTIFY=${NOTIFY}"
 printlog "LOGGING=${LOGGING}"
+printlog "CONTINUE_BLOCKING=${CONTINUE_BLOCKING}"
 
 # NOTE: Finding LOGO to use in dialogs
 case $LOGO in
@@ -9220,19 +9229,28 @@ else
 fi
 
 # MARK: check if this is an Update and we can use updateTool
-if [[ (-n $appversion && -n "$updateTool") || "$type" == "updateronly" ]]; then
-    printlog "App needs to be updated and uses $updateTool. Ignoring BLOCKING_PROCESS_ACTION and running updateTool now."
-    updateDialog "wait" "Updating..."
+    if [[ (-n $appversion && -n "$updateTool") ]]; then
+        printlog "appversion is $appversion and updateTool is $updateTool"
+        printlog "App needs to be updated and uses $updateTool. Checking type and if continue blocking is set."
+        if [[ ("$type" == "updateronly" && "$continueBlocking" = "true") ]]; then
+            printlog "App needs to be updated and uses $updateTool. Checking type and if continue blocking is set."
 
     if [[ $DEBUG -ne 1 ]]; then
-        if runUpdateTool; then
-            finishing
-            cleanupAndExit 0 "updateTool has run" REQ
-        elif [[ $type == "updateronly" ]];then
-            cleanupAndExit 0 "type is $type so we end here." REQ
+            if [[ "$type" == "updateronly" && "$continueBlocking" = "true" ]]; then
+                checkRunningProcesses
+                runUpdateTool
+                finishing
+                cleanupAndExit 0 "updateTool has run" REQ
+            elif [[ $type == "updateronly" && "$continueBlocking" = "false" ]]; then
+                runUpdateTool
+                finishing
+                cleanupAndExit 0 "updateTool has run" REQ
+            elif [[ $type == "updateronly" && -n "$continueBlocking" ]]; then
+                cleanupAndExit 0 "type is $type so we end here." REQ
         fi # otherwise continue
     else
         printlog "DEBUG mode 1 enabled, not running update tool" WARN
+        fi
     fi
 fi
 
@@ -9347,6 +9365,11 @@ case $type in
         ;;
     appInDmgInZip)
         installAppInDmgInZip
+        ;;
+    updateronly)
+        runUpdateTool
+        finishing
+        cleanupAndExit 0 "updateTool has run" REQ
         ;;
     *)
         cleanupAndExit 99 "Cannot handle type $type" ERROR
