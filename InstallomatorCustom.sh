@@ -338,7 +338,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.19"
+VERSION="12.20"
 VERSIONDATE="2024-10-03"
 
 # MARK: Functions
@@ -9052,7 +9052,7 @@ fi
 printlog "BLOCKING_PROCESS_ACTION=${BLOCKING_PROCESS_ACTION}"
 printlog "NOTIFY=${NOTIFY}"
 printlog "LOGGING=${LOGGING}"
-printlog "CONTINUE_BLOCKING=${CONTINUE_BLOCKING}"
+printlog "CONTINUE_BLOCKING=${continueBlocking}"
 
 # NOTE: Finding LOGO to use in dialogs
 case $LOGO in
