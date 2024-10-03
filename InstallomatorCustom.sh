@@ -5577,7 +5577,7 @@ microsoftazurestorageexplorer)
     ;;
 microsoftcompanyportal)
     name="Company Portal"
-    type="pkg"
+    type="updateronly"
     continueBlocking="true"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=869655"
     appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/CompanyPortal_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
@@ -5609,7 +5609,7 @@ microsoftedge|\
 microsoftedgeconsumerstable|\
 microsoftedgeenterprisestable)
     name="Microsoft Edge"
-    type="pkg"
+    type="updateronly"
     continueBlocking="true"
     versionKey="CFBundleShortVersionString"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=2093504"
@@ -5624,7 +5624,7 @@ microsoftedgeenterprisestable)
     ;;
 microsoftexcel)
     name="Microsoft Excel"
-    type="pkg"
+    type="updateronly"
     continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525135"
@@ -5711,7 +5711,7 @@ microsoftonedrive)
     # This version match the Last Released Production version setting of OneDrive update channel. It’s default if no update channel setting for OneDrive updates has been specified. Enterprise (Deferred) is also supported with label “microsoftonedrive-deferred”.
     # https://support.microsoft.com/en-us/office/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0#OSVersion=Mac
     name="OneDrive"
-    type="pkg"
+    type="updateronly"
     continueBlocking="true"
     versionKey="CFBundleShortVersionString"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=823060"
@@ -5756,7 +5756,7 @@ microsoftonenotereset)
     ;;
 microsoftoutlook)
     name="Microsoft Outlook"
-    type="pkg"
+    type="updateronly"
     continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525137"
@@ -5786,7 +5786,7 @@ microsoftoutlookreset)
     ;;
 microsoftpowerpoint)
     name="Microsoft PowerPoint"
-    type="pkg"
+    type="updateronly"
     continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525136"
@@ -5857,7 +5857,7 @@ microsoftteams)
     ;;
 microsoftteamsnew)
     name="Microsoft Teams"
-    type="pkg"
+    type="updateronly"
     continueBlocking="true"
     packageID="com.microsoft.teams2"
     # Fetch the latest version number from the Microsoft documentation page
