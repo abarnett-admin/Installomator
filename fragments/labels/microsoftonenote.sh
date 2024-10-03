@@ -1,6 +1,6 @@
 microsoftonenote)
     name="Microsoft OneNote"
-    type="pkg"
+    type="updateronly"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=820886"
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.onenote.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')

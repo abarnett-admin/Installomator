@@ -1,6 +1,6 @@
 microsoftautoupdate)
     name="Microsoft AutoUpdate"
-    type="pkg"
+    type="updateronly"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=830196"
     versionKey="CFBundleVersion"
     appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "Microsoft_AutoUpdate.*pkg" | sed -E 's/[a-zA-Z_]*_([0-9.]*)_.*/\1/g')

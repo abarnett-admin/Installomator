@@ -1,6 +1,6 @@
 microsoftteamsnew)
     name="Microsoft Teams (work or school)"
-    type="pkg"
+    type="updateronly"
     #packageID="com.microsoft.teams2"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=2249065"
     #appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i "^location" | tail -1 | cut -d "/" -f5)
