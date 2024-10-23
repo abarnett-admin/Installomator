@@ -338,8 +338,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.23"
-VERSIONDATE="2024-10-18"
+VERSION="12.24"
+VERSIONDATE="2024-10-23"
 
 # MARK: Functions
 
@@ -5539,7 +5539,7 @@ merlinproject)
     ;;
 microsoftautoupdate)
     name="Microsoft AutoUpdate"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=830196"
     versionKey="CFBundleVersion"
@@ -5578,7 +5578,7 @@ microsoftazurestorageexplorer)
     ;;
 microsoftcompanyportal)
     name="Company Portal"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=869655"
     appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/CompanyPortal_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
@@ -5610,7 +5610,7 @@ microsoftedge|\
 microsoftedgeconsumerstable|\
 microsoftedgeenterprisestable)
     name="Microsoft Edge"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     versionKey="CFBundleShortVersionString"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=2093504"
@@ -5625,7 +5625,7 @@ microsoftedgeenterprisestable)
     ;;
 microsoftexcel)
     name="Microsoft Excel"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525135"
@@ -5712,7 +5712,7 @@ microsoftonedrive)
     # This version match the Last Released Production version setting of OneDrive update channel. It’s default if no update channel setting for OneDrive updates has been specified. Enterprise (Deferred) is also supported with label “microsoftonedrive-deferred”.
     # https://support.microsoft.com/en-us/office/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0#OSVersion=Mac
     name="OneDrive"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     versionKey="CFBundleShortVersionString"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=823060"
@@ -5735,7 +5735,7 @@ microsoftonedrivereset)
     ;;
 microsoftonenote)
     name="Microsoft OneNote"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=820886"
@@ -5757,7 +5757,7 @@ microsoftonenotereset)
     ;;
 microsoftoutlook)
     name="Microsoft Outlook"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525137"
@@ -5787,7 +5787,7 @@ microsoftoutlookreset)
     ;;
 microsoftpowerpoint)
     name="Microsoft PowerPoint"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525136"
@@ -5858,7 +5858,7 @@ microsoftteams)
     ;;
 microsoftteamsnew)
     name="Microsoft Teams"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     packageID="com.microsoft.teams2"
     # Fetch the latest version number from the Microsoft documentation page
@@ -5902,7 +5902,7 @@ microsoftwindowsapp)
     ;;
 microsoftword)
     name="Microsoft Word"
-    type="updateronly"
+    type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525134"
