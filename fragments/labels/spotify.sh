@@ -6,6 +6,6 @@ spotify)
     elif [[ $(arch) == i386 ]]; then
         downloadURL="https://download.scdn.co/Spotify.dmg"
     fi
-    # appNewVersion=$(curl -fs https://www.spotify.com/us/opensource/ | cat | grep -o "<td>.*.</td>" | head -1 | cut -d ">" -f2 | cut -d "<" -f1) # does not result in the same version as downloaded
+    appNewVersion=$(curl -fs https://www.spotify.com/us/opensource/ | grep -m 1 -o '<td[^>]*>[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+[^<]*</td>' | sed 's/<[^>]*>//g' | sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/' | head -n 1)
     expectedTeamID="2FNC3A47ZF"
     ;;

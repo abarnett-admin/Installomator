@@ -338,7 +338,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.26"
+VERSION="12.27"
 VERSIONDATE="2024-10-25"
 
 # MARK: Functions
@@ -7732,7 +7732,7 @@ spotify)
     elif [[ $(arch) == i386 ]]; then
         downloadURL="https://download.scdn.co/Spotify.dmg"
     fi
-    appNewVersion=$(curl -fs https://www.spotify.com/us/opensource/ | grep -m 1 -o '<td class="TableCell__TableCellElement-sc-1nn7cfv-0 A-DkAn">[^<]*</td>' | sed 's/<[^>]*>//g' | head -n 1) # does not result in the same version as downloaded
+    appNewVersion=$(curl -fs https://www.spotify.com/us/opensource/ | grep -m 1 -o '<td[^>]*>[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+[^<]*</td>' | sed 's/<[^>]*>//g' | sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/' | head -n 1)
     expectedTeamID="2FNC3A47ZF"
     ;;
 sqlpropostgres)
