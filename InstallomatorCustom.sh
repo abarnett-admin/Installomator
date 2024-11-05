@@ -338,8 +338,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.28"
-VERSIONDATE="2024-10-26"
+VERSION="12.29"
+VERSIONDATE="2024-11-05"
 
 # MARK: Functions
 
@@ -5628,8 +5628,8 @@ microsoftexcel)
     type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=525135"
-    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
+    downloadURL=$(curl -s https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac | grep -i "Excel" | grep -o 'https://[^"]*' | grep "Excel" | head -n 1)
+    appNewVersion=$(basename "$downloadURL" | sed -E 's/^Microsoft_[^_]+_([0-9]+\.[0-9]+\.[0-9]+)_.*/\1/')
     expectedTeamID="UBF8T346G9"
     # if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
     #     printlog "Running msupdate --list"
@@ -5738,8 +5738,8 @@ microsoftonenote)
     type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=820886"
-    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
+    downloadURL=$(curl -s https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac | grep -i "OneNote" | grep -o 'https://[^"]*' | grep "OneNote" | head -n 1)
+    appNewVersion=$(basename "$downloadURL" | sed -E 's/^Microsoft_[^_]+_([0-9]+\.[0-9]+\.[0-9]+)_.*/\1/')
     expectedTeamID="UBF8T346G9"
     # if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
     #     printlog "Running msupdate --list"
@@ -5760,9 +5760,8 @@ microsoftoutlook)
     type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=525137"
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.outlook.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_.*pkg" | cut -d "_" -f 3 | cut -d "." -f 1-3)
+    downloadURL=$(curl -s https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac | grep -i "Outlook" | grep -o 'https://[^"]*' | grep "Outlook" | head -n 1)
+    appNewVersion=$(basename "$downloadURL" | sed -E 's/^Microsoft_[^_]+_([0-9]+\.[0-9]+\.[0-9]+)_.*/\1/')
     expectedTeamID="UBF8T346G9"
     # if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
     #    printlog "Running msupdate --list"
@@ -5790,8 +5789,8 @@ microsoftpowerpoint)
     type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=525136"
-    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Microsoft_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
+    downloadURL=$(curl -s https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac | grep -i "PowerPoint" | grep -o 'https://[^"]*' | grep "PowerPoint" | head -n 1)
+    appNewVersion=$(basename "$downloadURL" | sed -E 's/^Microsoft_[^_]+_([0-9]+\.[0-9]+\.[0-9]+)_.*/\1/')
     expectedTeamID="UBF8T346G9"
     # if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
     #     printlog "Running msupdate --list"
@@ -5905,9 +5904,8 @@ microsoftword)
     type="pkg"
     continueBlocking="true"
     versionKey="CFBundleVersion"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=525134"
-    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.word.standalone.365"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
-    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/Microsoft_.*pkg" | cut -d "_" -f 3 | cut -d "." -f 1-3)
+    downloadURL=$(curl -s https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac | grep -i "Word" | grep -o 'https://[^"]*' | grep "Word" | head -n 1)
+    appNewVersion=$(basename "$downloadURL" | sed -E 's/^Microsoft_[^_]+_([0-9]+\.[0-9]+\.[0-9]+)_.*/\1/')
     expectedTeamID="UBF8T346G9"
     # if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" ]]; then
     #     printlog "Running msupdate --list"
