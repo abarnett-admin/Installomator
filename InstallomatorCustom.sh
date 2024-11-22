@@ -338,8 +338,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.29"
-VERSIONDATE="2024-11-05"
+VERSION="12.30"
+VERSIONDATE="2024-11-22"
 
 # MARK: Functions
 
@@ -3483,7 +3483,7 @@ evernote)
     name="Evernote"
     type="dmg"
     downloadURL="https://mac.desktop.evernote.com/builds/Evernote-latest.dmg"
-    appNewVersion=$(curl -s https://evernote.com/release-notes | grep Latest | awk -F '<!-- -->' '{print $2}')
+    appNewVersion=$(curl -s https://evernote.com/release-notes | grep -o '(?<=Version )[\d.]+(?= - Latest)')
     expectedTeamID="Q79WDW8YH9"
     appName="Evernote.app"
     ;;
@@ -3512,10 +3512,11 @@ exifrenamer)
     expressvpn)
     name="ExpressVPN"
     type="pkg"
-    packageID="com.expressvpn.ExpressVPN"
-    downloadURL="https://www.expressvpn.com/clients/latest/mac"
-    appNewVersion="$(curl -fsIL https://www.expressvpn.com/clients/latest/mac | grep -i ^location | sed -n -e 's/^\(.*\)\(_release\)\(.*\)$/\3\2\1/p' | sed -n -e 's/^.*mac_//p')"
-    expectedTeamID="VMES9GFUQJ"
+    #packageID="com.expressvpn.ExpressVPN"
+    versionKey="CFBundleShortVersionString"
+    appNewVersion="$(curl -fsIL https://www.expressvpn.com/clients/latest/mac | grep -i ^location | sed -n 's/^.*mac_\([0-9.]*\)_release.*$/\1/p')"
+    downloadURL="https://www.expressvpn.com/clients/latest/mac/expressvpn_mac_${appNewVersion}_release.pkg"
+    expectedTeamID="TC292Y5427"
     ;;
 facebookmessenger)
     name="Messenger"
@@ -6837,7 +6838,7 @@ pritunl)
 privileges)
     # credit: Erik Stam (@erikstam)
     name="Privileges"
-    type="zip"
+    type="pkg"
     downloadURL=$(downloadURLFromGit sap macOS-enterprise-privileges )
     appNewVersion=$(versionFromGit sap macOS-enterprise-privileges )
     expectedTeamID="7R5ZEU67FQ"
