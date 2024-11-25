@@ -338,8 +338,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.30"
-VERSIONDATE="2024-11-22"
+VERSION="12.31"
+VERSIONDATE="2024-11-25"
 
 # MARK: Functions
 
@@ -5716,7 +5716,7 @@ microsoftonedrive)
     type="pkg"
     continueBlocking="true"
     versionKey="CFBundleShortVersionString"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=823060"
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=861011"
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.onedrive.standalone"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
     appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/Installers/.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
     expectedTeamID="UBF8T346G9"

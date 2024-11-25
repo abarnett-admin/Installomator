@@ -4,7 +4,7 @@ microsoftonedrive)
     name="OneDrive"
     type="pkg"
     versionKey="CFBundleShortVersionString"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=823060"
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=861011"
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.onedrive.standalone"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
     appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | cut -d "/" -f 6 | cut -d "." -f 1-3)
     expectedTeamID="UBF8T346G9"
