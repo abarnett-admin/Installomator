@@ -1,4 +1,5 @@
-microsoftwindowsapp)
+microsoftwindowsapp|\
+microsoftremotedesktop)
     name="Windows App"
     type="pkg"
     packageID="com.microsoft.rdc.macos"
