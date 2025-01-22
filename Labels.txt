@@ -497,7 +497,6 @@ microsoftonedrivereset
 microsoftonenote
 microsoftonenotereset
 microsoftoutlook
-microsoftoutlook-monthly
 microsoftoutlookdataremoval
 microsoftoutlookreset
 microsoftpowerpoint
