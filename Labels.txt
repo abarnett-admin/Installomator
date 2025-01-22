@@ -169,6 +169,9 @@ chromeremotedesktop
 chronoagent
 chronosync
 cinema4d
+cinema4d2023
+cinema4d2024
+cinema4d2025
 cisdem-documentreader
 citrixworkspace
 cleartouchcollage
@@ -256,6 +259,7 @@ eshareosx
 espanso
 etrecheck
 etssecurebrowser
+eul
 evercast
 evernote
 everweb
@@ -317,6 +321,7 @@ googledrivefilestream
 googleearth
 googlejapaneseinput
 googlesoftwareupdate
+gotiengviet
 gosign
 gotomeeting
 gpgsuite
@@ -375,6 +380,7 @@ jamfconnectconfiguration
 jamfcpr
 jamfmigrator
 jamfpppcutility
+jamfprintermanager
 jamfreenroller
 jamovi
 jasp
@@ -397,6 +403,7 @@ jetbrainsrubymine
 jetbrainstoolbox
 jetbrainswebstorm
 jitsimeet
+joplin
 jre8
 jumpdesktop
 jupyterlab
@@ -420,6 +427,7 @@ krita
 lastpass
 latexit
 launchbar
+launchcontrol
 lcadvancedvpnclient
 lexarrecoverytool
 lgcalibrationstudio
@@ -463,6 +471,7 @@ mattermost
 maxonapp
 mdmwatchdog
 meetingbar
+meistertask
 mendeleyreferencemanager
 menumeters
 merlinproject
@@ -567,6 +576,7 @@ nvivo13
 nvivo14
 nweasecuretestingbrowser
 obs
+obsbotcenter
 obsbotwebcam
 obsidian
 odrive
@@ -612,15 +622,20 @@ plantronicshub
 platypus
 plexmediaserver
 plisteditpro
+podman
 podmandesktop
+podmandesktopairgap
+polleverywhere
 polylens
 popsql
+portingkit
 postman
 powermonitor
 prism10
 prism9
 pritunl
 privileges
+privileges2
 processing3
 processing4
 proctortrack
@@ -643,6 +658,7 @@ r
 raindropio
 rancherdesktop
 rapidapi
+rawtherapee
 raycast
 realvncondemandassist
 realvncserver
@@ -679,6 +695,7 @@ rogueamoebasoundsource5
 royaltsx
 rstudio
 rustdesk
+safeexambrowser
 salesforcecli
 santa
 scaleft
@@ -701,6 +718,7 @@ shotcut
 shottr
 sidekick
 signal
+signiantapp
 silnite
 sipgateclinq
 sirimote
@@ -739,6 +757,7 @@ splashtopsos
 splashtopstreamer
 splice
 spotify
+sqlitebrowser
 sqlpropostgres
 sqlprostudio
 starface72x
@@ -776,6 +795,7 @@ teamviewerhostcustom
 teamviewerqs
 teamviewerqscustom
 techsmithcapture
+teladocproviderinstaller
 telegram
 tembo
 tencentmeeting
@@ -801,6 +821,7 @@ trapcode
 trex
 tunnelbear
 tunnelblick
+tuple
 typeface
 typinator
 typora
@@ -817,6 +838,7 @@ venturablocker
 veracrypt
 vfx
 vimac
+vimcal
 virtualbox
 virtualbuddy
 viscosity
