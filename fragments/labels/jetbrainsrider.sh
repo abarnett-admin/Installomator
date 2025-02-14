@@ -1,3 +1,4 @@
+
 jetbrainsrider)
     name="Rider"
     type="dmg"

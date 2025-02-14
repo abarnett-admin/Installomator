@@ -1,3 +1,4 @@
+
 mendeleyreferencemanager)
     name="Mendeley Reference Manager"
     type="dmg"

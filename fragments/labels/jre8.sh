@@ -1,3 +1,4 @@
+
 jre8)
     name="Java Runtime Environment 8"
     type="pkgInDmg"

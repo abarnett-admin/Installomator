@@ -1,3 +1,4 @@
+
 sqlpropostgres)
     name="SQLPro for Postgres"
     type="zip"

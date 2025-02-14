@@ -1,3 +1,4 @@
+
 beyondcomparepro)
     name="Beyond Compare"
     type="zip"

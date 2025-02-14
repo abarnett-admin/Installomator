@@ -1,3 +1,4 @@
+
 arcbrowser)
 name="Arc"
 type="dmg"

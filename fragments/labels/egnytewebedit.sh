@@ -1,3 +1,4 @@
+
 egnytewebedit)
     name="EgnyteWebEdit"
     type="pkg"
@@ -6,4 +7,3 @@ egnytewebedit)
     appName="Egnyte WebEdit.app"
     blockingProcesses=( NONE )
     ;;
-    

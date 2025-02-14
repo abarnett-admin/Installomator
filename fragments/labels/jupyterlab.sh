@@ -1,3 +1,4 @@
+
 jupyterlab)
     name="JupyterLab"
     type="dmg"

@@ -1,3 +1,4 @@
+
 magicbullet)
     name="Magic Bullet Suite"
     type="zip"
@@ -17,7 +18,7 @@ magicbullet)
     if [[ "$magicbulletHttpStatus" == "200" ]]; then
 	    printlog "DownloadURL HTTP status code: $magicbulletHttpStatus" INFO
     elif [[ "$magicbulletHttpStatus" == "404" ]]; then
-	    downloadURL="https://mx-app-blob-prod.maxon.net/mx-package-production/installer/macos/redgiant/magicbullet/releases/$appNewVersion/MagicBulletSuite-${appNewVersion}_mac.zip"
+    downloadURL="https://mx-app-blob-prod.maxon.net/mx-package-production/installer/macos/redgiant/magicbullet/releases/$appNewVersion/MagicBulletSuite-${appNewVersion}_mac.zip"
 	    printlog "Had to change DownloadURL due HTTP Status." INFO
     else
 	    printlog "Unexpected HTTP status code: $magicbulletHttpStatus" ERROR

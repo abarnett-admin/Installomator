@@ -1,3 +1,4 @@
+
 libericajdk11ltsfull)
     name="Liberica JDK 11 LTS Full"
     type="pkg"

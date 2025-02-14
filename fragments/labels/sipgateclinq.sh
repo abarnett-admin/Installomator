@@ -1,3 +1,4 @@
+
 sipgateclinq)
     name="Sipgate CLINQ"
     type="dmg"
@@ -6,3 +7,10 @@ sipgateclinq)
     expectedTeamID="K4L4M6DD76"
 ;;
 
+sirimote)
+    name="SiriMote"
+    type="zip"
+    downloadURL="http://bit.ly/sirimotezip"
+    #appNewVersion="" # Not found on web page
+    expectedTeamID="G78RJ6NLJU"
+    ;;

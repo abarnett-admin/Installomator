@@ -1,3 +1,4 @@
+
 yubikeymanager)
     name="YubiKey Manager GUI"
     type="pkg"

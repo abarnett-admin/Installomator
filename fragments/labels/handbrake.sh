@@ -1,3 +1,4 @@
+
 handbrake)
     name="HandBrake"
     type="dmg"

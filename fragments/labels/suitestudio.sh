@@ -1,3 +1,4 @@
+
 suitestudio)
     name="Suite"
     type="pkg"

@@ -1,3 +1,4 @@
+
 cherryaudiosolovox)
     name="Solovox"
     type="pkg"

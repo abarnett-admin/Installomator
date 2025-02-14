@@ -1,3 +1,4 @@
+
 jetbrainspycharmce|\
 pycharmce)
     name="PyCharm CE"

@@ -1,3 +1,4 @@
+
 snagit2020)
     name="Snagit 2020"
     type="dmg"

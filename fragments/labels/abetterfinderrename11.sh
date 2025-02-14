@@ -1,3 +1,4 @@
+
 abetterfinderrename11)
     name="A Better Finder Rename 11"
     type="dmg"

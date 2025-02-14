@@ -1,3 +1,4 @@
+
 jetbrainsdatagrip)
     name="DataGrip"
     type="dmg"

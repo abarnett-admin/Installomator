@@ -1,3 +1,4 @@
+
 zappy)
     name="Zappy"
     type="appInDmgInZip"

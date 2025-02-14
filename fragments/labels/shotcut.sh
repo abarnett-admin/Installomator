@@ -1,3 +1,4 @@
+
 shotcut)
     name="shotcut"
     type="dmg"

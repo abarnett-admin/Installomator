@@ -1,3 +1,4 @@
+
 adium)
     name="Adium"
     type="dmg"

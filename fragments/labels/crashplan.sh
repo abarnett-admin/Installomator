@@ -1,3 +1,4 @@
+
 crashplan)
     name="CrashPlan"
     appName="CrashPlan.app"

@@ -1,3 +1,4 @@
+
 jetbrainsgateway)
     name="JetBrains Gateway"
     type="dmg"

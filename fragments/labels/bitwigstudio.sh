@@ -1,3 +1,4 @@
+
 bitwigstudio)
     name="Bitwig Studio"
     type="dmg"

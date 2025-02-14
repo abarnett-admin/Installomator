@@ -1,3 +1,4 @@
+
 cherryaudioprosoloist)
     name="Pro Soloist"
     type="pkg"

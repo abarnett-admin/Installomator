@@ -1,3 +1,4 @@
+
 ecosiabrowser)
     name="Ecosia Browser"
     type="dmg"

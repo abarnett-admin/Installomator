@@ -1,3 +1,4 @@
+
 toggltrack)
     name="Toggl Track"
     type="dmg"

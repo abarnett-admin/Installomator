@@ -1,3 +1,4 @@
+
 androidstudio)
     name="Android Studio"
     type="dmg"

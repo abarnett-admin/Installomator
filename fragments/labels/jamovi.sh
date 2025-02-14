@@ -1,3 +1,4 @@
+
 jamovi)
     name="jamovi"
     type="dmg"

@@ -1,3 +1,4 @@
+
 gyazogif)
     # credit: @matins
     # This is identical to gyazo, but the download contains two apps on the DMG

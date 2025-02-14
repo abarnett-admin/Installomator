@@ -1,3 +1,4 @@
+
 sequelpro)
     name="Sequel Pro"
     type="dmg"

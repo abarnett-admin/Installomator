@@ -1,3 +1,4 @@
+
 slack)
     name="Slack"
     type="dmg"

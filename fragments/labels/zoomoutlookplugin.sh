@@ -1,3 +1,4 @@
+
 zoomoutlookplugin)
     name="Zoom Outlook Plugin"
     appName="PluginLauncher.app"

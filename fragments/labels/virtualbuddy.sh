@@ -1,3 +1,4 @@
+
 virtualbuddy)
     name="VirtualBuddy"
     type="dmg"

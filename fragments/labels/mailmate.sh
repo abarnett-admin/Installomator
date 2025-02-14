@@ -1,3 +1,4 @@
+
 mailmate)
     # info: It is now recommended for new users to use the latest beta release of MailMate instead of the public release, see https://freron.com/download/
     name="MailMate"

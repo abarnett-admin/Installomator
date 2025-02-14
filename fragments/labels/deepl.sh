@@ -1,3 +1,4 @@
+
 deepl)
     name="DeepL"
     type="dmg"

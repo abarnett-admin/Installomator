@@ -1,3 +1,4 @@
+
 snagit2023)
     name="Snagit 2023"
     type="dmg"

@@ -1,3 +1,4 @@
+
 dropbox)
     name="Dropbox"
     type="dmg"

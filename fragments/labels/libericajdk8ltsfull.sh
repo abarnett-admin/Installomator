@@ -1,3 +1,4 @@
+
 libericajdk8ltsfull)
     name="Liberica JDK 8 Full LTS"
     type="pkg"

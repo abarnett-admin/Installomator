@@ -1,3 +1,4 @@
+
 ice)
 	# A versatile macOS menu bar management tool that allows users to hide, show, and rearrange menu bar items
     name="Ice"

@@ -1,3 +1,4 @@
+
 krita)
     # credit: Søren Theilgaard (@theilgaard)
     name="krita"

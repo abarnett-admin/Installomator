@@ -1,3 +1,4 @@
+
 resiliosynchome)
     name="Resilio Sync"
     type="dmg"

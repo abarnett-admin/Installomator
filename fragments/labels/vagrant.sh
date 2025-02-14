@@ -1,3 +1,4 @@
+
 vagrant)
     name="Vagrant"
     type="pkgInDmg"

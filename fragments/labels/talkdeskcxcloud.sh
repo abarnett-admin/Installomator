@@ -1,3 +1,4 @@
+
 talkdeskcxcloud)
     name="Talkdesk"
     type="dmg"

@@ -1,3 +1,4 @@
+
 cherryaudioca2600)
     name="CA2600"
     type="pkg"

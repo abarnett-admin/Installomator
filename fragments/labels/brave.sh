@@ -1,3 +1,4 @@
+
 brave)
     name="Brave Browser"
     type="dmg"

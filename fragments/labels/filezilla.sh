@@ -1,3 +1,4 @@
+
 filezilla)
     name="FileZilla"
     type="bz2"
@@ -12,4 +13,3 @@ filezilla)
     expectedTeamID="5VPGKXL75N"
     blockingProcesses=( NONE )
     ;;
-    

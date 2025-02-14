@@ -1,3 +1,4 @@
+
 nomachine)
     name="NoMachine"
     type="pkgInDmg"

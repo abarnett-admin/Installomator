@@ -1,3 +1,4 @@
+
 splashtopsos)
     name="Splashtop SOS"
     type="dmg"

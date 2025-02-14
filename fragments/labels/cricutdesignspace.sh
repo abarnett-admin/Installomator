@@ -1,3 +1,4 @@
+
 cricutdesignspace)
     name="Cricut Design Space"
     type="dmg"
@@ -7,4 +8,3 @@ cricutdesignspace)
     downloadURL=$(getJSONValue $(curl  -fsL "https://apis.cricut.com/desktopdownload/InstallerFile?shard=a&operatingSystem=osxnative&fileName=CricutDesignSpace-Install-v${appNewVersion}.dmg") "result")
     expectedTeamID="25627ZFVT7"
     ;;
-

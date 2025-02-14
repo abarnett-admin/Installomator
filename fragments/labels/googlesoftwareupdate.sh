@@ -1,3 +1,4 @@
+
 googlesoftwareupdate)
     name="Install Google Software Update"
     type="pkgInDmg"

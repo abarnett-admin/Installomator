@@ -1,3 +1,4 @@
+
 hubstaff)
     name="Hubstaff"
     type="dmg"

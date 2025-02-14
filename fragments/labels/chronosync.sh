@@ -1,3 +1,4 @@
+
 chronosync)
     name="ChronoSync"
     type="pkgInDmg"

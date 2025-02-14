@@ -5,15 +5,11 @@
     ;;
 esac
 
-# MARK: finish reading the arguments:
-while [[ -n $1 ]]; do
-    if [[ $1 =~ ".*\=.*" ]]; then
-        # if an argument contains an = character, send it to eval
-        printlog "setting variable from argument $1" INFO
-        eval $1
-    fi
-    # shift to next argument
-    shift 1
+# MARK: reading arguments again
+printlog "Reading arguments again: ${argumentsArray[*]}" INFO
+for argument in "${argumentsArray[@]}"; do
+    printlog "argument: $argument" DEBUG
+    eval $argument
 done
 
 # verify we have everything we need
@@ -78,6 +74,7 @@ fi
 printlog "BLOCKING_PROCESS_ACTION=${BLOCKING_PROCESS_ACTION}"
 printlog "NOTIFY=${NOTIFY}"
 printlog "LOGGING=${LOGGING}"
+printlog "CONTINUE_BLOCKING=${continueBlocking}"
 
 # NOTE: Finding LOGO to use in dialogs
 case $LOGO in
@@ -110,7 +107,11 @@ case $LOGO in
         ;;
     microsoft)
         # Microsoft Endpoint Manager (Intune)
-        LOGO="/Library/Intune/Microsoft Intune Agent.app/Contents/Resources/AppIcon.icns"
+        if [[ -d "/Library/Intune/Microsoft Intune Agent.app" ]]; then
+            LOGO="/Library/Intune/Microsoft Intune Agent.app/Contents/Resources/AppIcon.icns"
+        elif [[ -d "/Applications/Company Portal.app" ]]; then
+            LOGO="/Applications/Company Portal.app/Contents/Resources/AppIcon.icns"
+        fi
         if [[ -z $MDMProfileName ]]; then; MDMProfileName="Management Profile"; fi
         ;;
     ws1)
@@ -232,25 +233,50 @@ if [[ -n $appNewVersion ]]; then
         else
             printlog "DEBUG mode 1 enabled, not exiting, but there is no new version of app." WARN
         fi
+    elif [[ $appversion > $appNewVersion && $INSTALL != "force" ]]; then
+        message="$name, version $appversion, is newer than the latest version $appNewVersion."
+        if [[ $currentUser != "loginwindow" && $NOTIFY == "all" ]]; then
+            printlog "notifying"
+            displaynotification "$message" "Newer version already installed!"
+        fi
+        if [[ $DIALOG_CMD_FILE != "" ]]; then
+            updateDialog "complete" "Newer version already installed..."
+            sleep 2
+        fi
+        cleanupAndExit 0 "Newer version already installed." REQ
+    elif [[ $appversion > $appNewVersion && $INSTALL == "force" ]]; then
+        printlog "WARNING: Forcing installation of older version $appNewVersion, even though newer version $appversion is already installed."
+    elif [[ $appversion > $appNewVersion && $INSTALL == "" ]]; then
+        printlog "WARNING: Newer version $appversion is already installed, but $INSTALL is empty. Skipping installation."
+        cleanupAndExit 0 "Newer version already installed." REQ
     fi
 else
     printlog "Latest version not specified."
 fi
 
 # MARK: check if this is an Update and we can use updateTool
-if [[ (-n $appversion && -n "$updateTool") || "$type" == "updateronly" ]]; then
-    printlog "App needs to be updated and uses $updateTool. Ignoring BLOCKING_PROCESS_ACTION and running updateTool now."
-    updateDialog "wait" "Updating..."
+    if [[ (-n $appversion && -n "$updateTool") ]]; then
+        printlog "appversion is $appversion and updateTool is $updateTool"
+        printlog "App needs to be updated and uses $updateTool. Checking type and if continue blocking is set."
+        if [[ ("$type" == "updateronly" && "$continueBlocking" = "true") ]]; then
+            printlog "App needs to be updated and uses $updateTool. Checking type and if continue blocking is set."
 
     if [[ $DEBUG -ne 1 ]]; then
-        if runUpdateTool; then
-            finishing
-            cleanupAndExit 0 "updateTool has run" REQ
-        elif [[ $type == "updateronly" ]];then
-            cleanupAndExit 0 "type is $type so we end here." REQ
+            if [[ "$type" == "updateronly" && "$continueBlocking" = "true" ]]; then
+                checkRunningProcesses
+                runUpdateTool
+                finishing
+                cleanupAndExit 0 "updateTool has run" REQ
+            elif [[ $type == "updateronly" && "$continueBlocking" = "false" ]]; then
+                runUpdateTool
+                finishing
+                cleanupAndExit 0 "updateTool has run" REQ
+            elif [[ $type == "updateronly" && -n "$continueBlocking" ]]; then
+                cleanupAndExit 0 "type is $type so we end here." REQ
         fi # otherwise continue
     else
         printlog "DEBUG mode 1 enabled, not running update tool" WARN
+        fi
     fi
 fi
 
@@ -290,9 +316,14 @@ else
         curlDownloadStatus=$(echo $?)
     fi
 
-    deduplicatelogs "$curlDownload"
-    if [[ $curlDownloadStatus -ne 0 ]]; then
-    #if ! curl --location --fail --silent "$downloadURL" -o "$archiveName"; then
+    # Trying to detect proxy or web filter on downloaded file
+    archiveSHA=$(shasum "$archiveName" | cut -w -f 1)
+    archiveSize=$(du -k "$archiveName" | cut -w -f 1)
+    archiveType=$(file "$archiveName" | cut -d ':' -f2 )
+    printlog "Downloaded $archiveName – Type is $archiveType – SHA is $archiveSHA – Size is $archiveSize kB" INFO
+
+    # Trying to detect download errors, including proxy or web filter blocking on downloaded file
+    if [[ $curlDownloadStatus -ne 0 || $archiveType == *ASCII* ]]; then
         printlog "error downloading $downloadURL" ERROR
         message="$name update/installation failed. This will be logged, so IT can follow up."
         if [[ $currentUser != "loginwindow" && $NOTIFY == "all" ]]; then
@@ -303,13 +334,15 @@ else
                 displaynotification "$message" "Error installing $name"
             fi
         fi
-        printlog "File list: $(ls -lh "$archiveName")" ERROR
-        printlog "File type: $(file "$archiveName")" ERROR
+        if [[ $archiveType == *ASCII* ]]; then
+            firstLines=$(head -c 51170 $archiveName)
+            deduplicatelogs $firstLines
+            cleanupAndExit 2 "File Downloaded is ASCII, we’re probably being blocked by a proxy or filter.  First 5k of file is:\n$logoutput" ERROR
+        else
+            deduplicatelogs "$curlDownload"
         cleanupAndExit 2 "Error downloading $downloadURL error:\n$logoutput" ERROR
     fi
-    printlog "File list: $(ls -lh "$archiveName")" DEBUG
-    printlog "File type: $(file "$archiveName")" DEBUG
-    printlog "curl output was:\n$logoutput" DEBUG
+    fi
 fi
 
 # MARK: when user is logged in, and app is running, prompt user to quit app
@@ -365,6 +398,11 @@ case $type in
         ;;
     appInDmgInZip)
         installAppInDmgInZip
+        ;;
+    updateronly)
+        runUpdateTool
+        finishing
+        cleanupAndExit 0 "updateTool has run" REQ
         ;;
     *)
         cleanupAndExit 99 "Cannot handle type $type" ERROR

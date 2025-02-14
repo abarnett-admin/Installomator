@@ -1,3 +1,4 @@
+
 pdfsam)
     name="PDFsam Basic"
     type="dmg"

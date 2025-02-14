@@ -1,3 +1,4 @@
+
 rancherdesktop)
     name="Rancher Desktop"
     type="zip"

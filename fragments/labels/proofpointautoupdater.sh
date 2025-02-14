@@ -1,3 +1,4 @@
+
 proofpointautoupdater)
     name="Proofpoint Auto Updater"
     type="pkgInZip"

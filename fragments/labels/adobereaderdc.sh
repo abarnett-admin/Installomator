@@ -1,3 +1,4 @@
+
 adobereaderdc|\
 adobereaderdc-install|\
 adobereaderdc-update)
@@ -25,7 +26,9 @@ adobereaderdc-update)
       adobecurrentmod="${adobecurrent//.}"
       if [[ "${adobecurrentmod}" != <-> ]]; then
         printlog "Got an invalid response for the Adobe Reader Current Version: ${adobecurrent}" ERROR
-        printlog "################## End $APPLICATION \n\n" INFO
+        printlog "################## End $APPLICATION 
+
+" INFO
         exit 50
       fi
       if pgrep -q "Acrobat Updater"; then
@@ -37,7 +40,8 @@ adobereaderdc-update)
     else
       printlog "Changing IFS for Adobe Reader" INFO
       SAVEIFS=$IFS
-      IFS=$'\n'
+      IFS=$'
+'
       versions=( $( curl -s https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+"| head -n 30) )
       local version
       for version in $versions; do

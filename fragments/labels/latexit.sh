@@ -1,3 +1,4 @@
+
 latexit)
     name="LaTeXiT"
     type="dmg"

@@ -1,3 +1,4 @@
+
 meetingbar)
     name="Meetingbar"
     type="dmg"

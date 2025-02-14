@@ -1,3 +1,4 @@
+
 cryptomator)
     name="Cryptomator"
     type="dmg"

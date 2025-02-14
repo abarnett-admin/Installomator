@@ -1,3 +1,4 @@
+
 exifrenamer)
     name="ExifRenamer"
     type="dmg"

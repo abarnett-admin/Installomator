@@ -1,3 +1,4 @@
+
 bibdesk)
     name="BibDesk"
     type="dmg"

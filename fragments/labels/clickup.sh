@@ -1,3 +1,4 @@
+
 clickup)
 	name="ClickUp"
 	type="dmg"
@@ -10,3 +11,11 @@ clickup)
 	fi
 	expectedTeamID="5RJWFAUGXQ"
 	;;
+clipgrab)
+    name="ClipGrab"
+    type="dmg"
+    expectedTeamID="E8BJ3ZV5W8"
+    downloadURL="$( curl -s 'https://clipgrab.org' | tr '"' '
+' | grep dmg )"
+    appNewVersion="$( echo "$downloadURL" | sed -E 's/.*-([0-9.]*).dmg/\1/' )"
+    ;;

@@ -1,3 +1,4 @@
+
 craftmanager)
     name="CraftManager"
     type="zip"

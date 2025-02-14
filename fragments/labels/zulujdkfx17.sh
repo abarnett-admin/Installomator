@@ -1,3 +1,4 @@
+
 zulujdkfx17)
     name="Zulu JDK FX 17"
     type="pkgInDmg"

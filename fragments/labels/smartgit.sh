@@ -1,3 +1,4 @@
+
 smartgit)
     name="SmartGit"
     type="dmg"

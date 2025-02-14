@@ -1,3 +1,4 @@
+
 googlejapaneseinput)
     # credit: Tadayuki Onishi (@kenchan0130)
     name="GoogleJapaneseInput"

@@ -1,3 +1,4 @@
+
 mysqlworkbenchce)
     name="MySQLWorkbench"
     type="dmg"

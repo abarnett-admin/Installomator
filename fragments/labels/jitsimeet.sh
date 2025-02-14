@@ -1,3 +1,4 @@
+
 jitsimeet)
     name="Jitsi Meet"
     type="dmg"

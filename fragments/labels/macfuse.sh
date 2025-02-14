@@ -1,3 +1,4 @@
+
 macfuse)
     name="FUSE for macOS"
     type="pkgInDmg"

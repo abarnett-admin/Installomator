@@ -1,3 +1,4 @@
+
 scribus)
     name="Scribus"
     type="dmg"

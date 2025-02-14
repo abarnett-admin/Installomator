@@ -1,3 +1,4 @@
+
 scmenu)
     name="SC Menu"
     type="dmg"

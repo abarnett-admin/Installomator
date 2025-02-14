@@ -1,10 +1,13 @@
+
 adobecreativeclouddesktop)
     name="Adobe Creative Cloud"
     appName="Creative Cloud.app"
     type="dmg"
     if pgrep -q "Adobe Installer"; then
         printlog "Adobe Installer is running, not a good time to update." WARN
-        printlog "################## End $APPLICATION \n\n" INFO
+        printlog "################## End $APPLICATION 
+
+" INFO
         exit 75
     fi
     if [[ "$(arch)" == "arm64" ]]; then

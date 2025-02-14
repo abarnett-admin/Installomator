@@ -1,3 +1,4 @@
+
 xeroxphaser7800)
     name="XeroxPhaser"
     type="pkgInDmg"

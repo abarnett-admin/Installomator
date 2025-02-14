@@ -1,3 +1,4 @@
+
 soapuiopensource)
     name="SoapUI"
     type="dmg"

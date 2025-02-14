@@ -1,3 +1,4 @@
+
 marathoninfinity)
     name="Classic Marathon Infinity"
     type="dmg"

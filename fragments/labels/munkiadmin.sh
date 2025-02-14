@@ -1,3 +1,4 @@
+
 munkiadmin)
     name="MunkiAdmin"
     type="dmg"

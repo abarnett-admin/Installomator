@@ -1,3 +1,4 @@
+
 rstudio)
     name="RStudio"
     type="dmg"

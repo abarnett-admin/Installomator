@@ -1,3 +1,4 @@
+
 cherryaudioeightvoice)
     name="Eight Voice"
     type="pkg"

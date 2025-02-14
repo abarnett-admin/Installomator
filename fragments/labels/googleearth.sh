@@ -1,3 +1,4 @@
+
 googleearth)
     name="Google Earth Pro"
     type="pkgInDmg"

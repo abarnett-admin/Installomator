@@ -1,3 +1,4 @@
+
 firefox)
     name="Firefox"
     type="pkg"

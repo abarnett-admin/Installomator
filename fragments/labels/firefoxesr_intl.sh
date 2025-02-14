@@ -1,3 +1,4 @@
+
 firefoxesr_intl)
     # This label will try to figure out the selected language of the user,
     # and install corrosponding version of Firefox ESR

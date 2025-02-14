@@ -1,3 +1,4 @@
+
 yubicoauthenticator)
     name="Yubico Authenticator"
     type="dmg"

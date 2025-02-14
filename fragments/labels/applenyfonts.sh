@@ -1,3 +1,4 @@
+
 applenyfonts)
     name="Apple New York Font Collection"
     type="pkgInDmg"

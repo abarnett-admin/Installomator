@@ -1,3 +1,4 @@
+
 jetbrainspycharm)
     # This is the Pro version of PyCharm. Do not confuse with PyCharm CE.
     name="PyCharm"

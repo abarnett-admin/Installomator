@@ -1,3 +1,4 @@
+
 jetbrainsdataspell)
     name="DataSpell"
     type="dmg"

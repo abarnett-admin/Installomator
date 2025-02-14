@@ -1,3 +1,4 @@
+
 morisawadesktopmanager)
     name="Morisawa Desktop Manager"
     type="pkgInDmg"

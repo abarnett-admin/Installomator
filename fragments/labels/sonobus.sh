@@ -1,3 +1,4 @@
+
 sonobus)
     name="Sonobus"
     type="pkgInDmg"

@@ -1,3 +1,4 @@
+
 adobeacrobatprodc)
     name="Adobe Acrobat Pro DC"
     appName="Acrobat Distiller.app"

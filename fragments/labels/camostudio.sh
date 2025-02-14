@@ -1,3 +1,4 @@
+
 camostudio)
     name="Camo Studio"
     type="zip"

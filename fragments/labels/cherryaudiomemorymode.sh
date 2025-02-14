@@ -1,3 +1,4 @@
+
 cherryaudiomemorymode)
     name="Memorymode"
     type="pkg"

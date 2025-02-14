@@ -1,3 +1,4 @@
+
 sqlprostudio)
     name="SQLPro Studio"
     type="zip"

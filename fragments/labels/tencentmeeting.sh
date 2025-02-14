@@ -1,3 +1,4 @@
+
 tencentmeeting)
     name="TencentMeeting"
     type="dmg"
@@ -12,4 +13,3 @@ tencentmeeting)
     appCustomVersion() { echo "$(defaults read /Applications/TencentMeeting.app/Contents/Info.plist CFBundleShortVersionString)$(echo ".")$(defaults read /Applications/TencentMeeting.app/Contents/Info.plist CFBundleVersion)" }
     expectedTeamID="88L2Q4487U"
     ;;
-

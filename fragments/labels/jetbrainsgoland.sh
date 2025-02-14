@@ -1,3 +1,4 @@
+
 jetbrainsgoland)
     name="GoLand"
     type="dmg"

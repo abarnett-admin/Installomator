@@ -1,3 +1,4 @@
+
 whatsapp)
     name="WhatsApp"
     type="dmg"

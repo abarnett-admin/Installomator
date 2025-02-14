@@ -1,3 +1,4 @@
+
 zotero)
     name="Zotero"
     type="dmg"

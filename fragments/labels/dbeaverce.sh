@@ -1,3 +1,4 @@
+
 dbeaverce)
     name="DBeaver"
     type="dmg"

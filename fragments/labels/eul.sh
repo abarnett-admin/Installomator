@@ -1,3 +1,4 @@
+
 eul)
     name="eul"
     type="zip"
@@ -5,4 +6,3 @@ eul)
     appNewVersion="$(versionFromGit gao-sun eul)"
     expectedTeamID="M8G2RFZVFV"
     ;;
-

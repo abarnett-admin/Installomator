@@ -1,3 +1,4 @@
+
 rawtherapee)
     name="RawTherapee"
     type="appInDmgInZip"

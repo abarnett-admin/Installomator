@@ -1,3 +1,4 @@
+
 cherryaudiominiverse)
     name="Miniverse"
     type="pkg"

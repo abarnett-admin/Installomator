@@ -1,3 +1,4 @@
+
 cherryaudiocr78)
     name="CR-78"
     type="pkg"

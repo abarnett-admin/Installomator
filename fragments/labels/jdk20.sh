@@ -1,3 +1,4 @@
+
 jdk20)
     name="Java SE Development Kit 20"
     type="pkgInDmg"

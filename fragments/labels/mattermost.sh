@@ -1,3 +1,4 @@
+
 mattermost)
     name="Mattermost"
     type="dmg"

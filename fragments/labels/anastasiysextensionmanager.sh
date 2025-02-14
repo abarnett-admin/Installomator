@@ -1,3 +1,4 @@
+
 anastasiysextensionmanager)
     name="ExtensionManager"
     type="zip"

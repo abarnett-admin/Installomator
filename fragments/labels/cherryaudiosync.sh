@@ -1,3 +1,4 @@
+
 cherryaudiosync)
     name="Cherry Audio Sync"
     type="pkg"

@@ -1,3 +1,4 @@
+
 microsoftvisualstudiocode|\
 visualstudiocode)
     name="Visual Studio Code"

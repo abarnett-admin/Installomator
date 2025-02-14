@@ -1,3 +1,4 @@
+
 amazonchime)
     # credit: @dvsjr macadmins slack
     name="Amazon Chime"

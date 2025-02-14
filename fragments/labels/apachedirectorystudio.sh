@@ -1,3 +1,4 @@
+
 apachedirectorystudio)
     name="ApacheDirectoryStudio"
     type="dmg"

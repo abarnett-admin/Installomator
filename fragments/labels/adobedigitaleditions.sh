@@ -1,3 +1,4 @@
+
 adobedigitaleditions)
     name="Adobe Digital Editions"
     type="pkgInDmg"

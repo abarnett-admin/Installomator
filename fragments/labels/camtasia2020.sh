@@ -1,3 +1,4 @@
+
 camtasia2020)
     name="Camtasia 2020"
     type="dmg"

@@ -1,3 +1,4 @@
+
 gpgsync)
     name="GPG Sync"
     type="pkg"

@@ -1,3 +1,4 @@
+
 sonicvisualiser)
     name="Sonic Visualiser"
     type="dmg"

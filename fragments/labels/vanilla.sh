@@ -1,3 +1,4 @@
+
 vanilla)
     name="Vanilla"
     type="dmg"

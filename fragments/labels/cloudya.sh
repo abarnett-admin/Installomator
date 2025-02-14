@@ -1,3 +1,4 @@
+
 cloudya)
     name="Cloudya"
     type="appInDmgInZip"

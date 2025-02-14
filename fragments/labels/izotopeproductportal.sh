@@ -1,3 +1,4 @@
+
 izotopeproductportal)
     name="iZotope Product Portal"
     type="dmg"

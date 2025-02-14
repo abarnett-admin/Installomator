@@ -1,3 +1,4 @@
+
 microsoftskypeforbusinessremovaltool)
     name="Skype for Business Removal"
     type="pkg"

@@ -1,3 +1,4 @@
+
 plantronicshub)
     name="Plantronics Hub"
     type="pkgInDmg"

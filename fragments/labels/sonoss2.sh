@@ -1,3 +1,4 @@
+
 sonoss2)
     name="Sonos"
     type="dmg"

@@ -1,3 +1,4 @@
+
 microsoftwindowsapp|\
 microsoftremotedesktop)
     name="Windows App"

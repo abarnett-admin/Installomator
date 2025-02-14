@@ -1,3 +1,4 @@
+
 firefoxesr|\
 firefoxesrpkg)
     name="Firefox"

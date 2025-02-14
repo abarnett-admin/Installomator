@@ -1,3 +1,4 @@
+
 betterdisplay)
     name="BetterDisplay"
     type="dmg"

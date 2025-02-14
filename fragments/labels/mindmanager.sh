@@ -1,3 +1,4 @@
+
 mindmanager)
     name="MindManager"
     type="dmg"

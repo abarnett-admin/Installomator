@@ -1,3 +1,4 @@
+
 espanso)
     name="Espanso"
     type="zip"

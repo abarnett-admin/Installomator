@@ -1,3 +1,4 @@
+
 redshift)
     name="redshift"
     blockingProcesses=( "Cinema 4D" )

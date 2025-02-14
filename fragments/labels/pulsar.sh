@@ -1,3 +1,4 @@
+
 pulsar)
     name="Pulsar"
     type="zip"
@@ -12,4 +13,3 @@ pulsar)
     downloadURL=$(downloadURLFromGit pulsar-edit pulsar)
     expectedTeamID="D3KV2P2CZ8"
     ;;
-

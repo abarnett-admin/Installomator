@@ -1,3 +1,4 @@
+
 cherryaudiomoduledesigner)
     name="Voltage Module Designer"
     type="pkg"

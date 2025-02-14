@@ -1,3 +1,4 @@
+
 androidfiletransfer)
     name="Android File Transfer"
     type="dmg"

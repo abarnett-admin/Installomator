@@ -1,3 +1,4 @@
+
 sync)
     name="Sync"
     type="dmg"

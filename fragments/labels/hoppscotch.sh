@@ -1,3 +1,4 @@
+
 hoppscotch)
     name="Hoppscotch"
     type="dmg"

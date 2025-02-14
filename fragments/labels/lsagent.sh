@@ -1,3 +1,4 @@
+
 lsagent)
     name="LsAgent-osx"
     #Description: Lansweeper is an IT Asset Management solution. This label installs the latest version. 
@@ -45,7 +46,8 @@ lsagent)
         lsagentLanguage="en"
     fi
     if [[ -z $lsagentServer && -z $lsagentKey ]]; then
-        cleanupAndExit 89 "This label requires more parameters: lsagentServer and/or lsagentKey is required. Optional parameters include: lsagentPort, lsagentMode, and lsagentLanguage\nSee /Volumes/LsAgent/LsAgent-osx.app/Contents/MacOS/installbuilder.sh --help" ERROR
+        cleanupAndExit 89 "This label requires more parameters: lsagentServer and/or lsagentKey is required. Optional parameters include: lsagentPort, lsagentMode, and lsagentLanguage
+See /Volumes/LsAgent/LsAgent-osx.app/Contents/MacOS/installbuilder.sh --help" ERROR
     fi
     CLIArguments=( --mode $lsagentMode --installer-language $lsagentLanguage )
     if [[ -n $lsagentServer ]]; then

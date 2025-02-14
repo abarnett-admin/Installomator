@@ -1,3 +1,4 @@
+
 cherryaudiorackmode)
     name="Rackmode"
     type="pkg"

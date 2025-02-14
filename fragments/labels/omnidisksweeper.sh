@@ -1,3 +1,4 @@
+
 omnidisksweeper)
     name="OmniDiskSweeper"
     type="dmg"

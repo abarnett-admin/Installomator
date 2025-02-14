@@ -1,3 +1,4 @@
+
 jamfcheck)
     name="jamfcheck"
     type="dmg"

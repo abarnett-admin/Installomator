@@ -1,3 +1,4 @@
+
 egnytecore)
     name="Egnyte Core"
     appName="Egnyte.app"

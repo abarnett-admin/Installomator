@@ -1,3 +1,4 @@
+
 cherryaudioquadra)
     name="Quadra"
     type="pkg"

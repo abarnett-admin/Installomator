@@ -1,3 +1,4 @@
+
 arduinoide)
     name="Arduino IDE"
     type="dmg"
@@ -11,4 +12,3 @@ arduinoide)
     appNewVersion="$(versionFromGit arduino arduino-ide)"
     expectedTeamID="7KT7ZWMCJT"
     ;;
-

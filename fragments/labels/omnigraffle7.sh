@@ -1,3 +1,4 @@
+
 omnigraffle7)
     name="OmniGraffle"
     type="dmg"

@@ -1,3 +1,4 @@
+
 jabradirect)
     name="Jabra Direct"
     type="pkgInDmg"

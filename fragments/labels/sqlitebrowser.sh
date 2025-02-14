@@ -1,3 +1,4 @@
+
 sqlitebrowser)
     name="DB Browser for SQLite"
     type="dmg"

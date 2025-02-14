@@ -1,3 +1,4 @@
+
 balenaetcher)
     name="balenaEtcher"
     type="dmg"

@@ -1,3 +1,4 @@
+
 craftmanagerforsketch)
     name="CraftManager"
     type="zip"

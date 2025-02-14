@@ -1,3 +1,4 @@
+
 workplacechat)
     name="Workplace Chat"
     type="dmg"

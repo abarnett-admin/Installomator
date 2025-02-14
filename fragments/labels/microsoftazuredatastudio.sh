@@ -1,3 +1,4 @@
+
 microsoftazuredatastudio|\
 azuredatastudio)
     name="Azure Data Studio"

@@ -1,3 +1,4 @@
+
 firefox_da)
     name="Firefox"
     type="dmg"

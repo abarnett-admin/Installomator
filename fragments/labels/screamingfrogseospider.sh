@@ -1,3 +1,4 @@
+
 screamingfrogseospider)
     name="Screaming Frog SEO Spider"
     type="dmg"

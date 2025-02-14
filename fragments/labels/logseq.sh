@@ -1,3 +1,4 @@
+
 logseq)
     name="Logseq"
     type="dmg"

@@ -1,3 +1,4 @@
+
 googleadseditor)
     name="Google Ads Editor"
     type="dmg"

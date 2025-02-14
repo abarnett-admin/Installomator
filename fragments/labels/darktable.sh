@@ -1,3 +1,4 @@
+
 darktable)
     # credit: Søren Theilgaard (@theilgaard)
     name="darktable"

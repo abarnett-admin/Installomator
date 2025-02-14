@@ -1,3 +1,4 @@
+
 netspot)
     name="NetSpot"
     type="dmg"

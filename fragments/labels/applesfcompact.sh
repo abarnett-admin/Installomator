@@ -1,3 +1,4 @@
+
 applesfcompact)
     name="San Francisco Compact"
     type="pkgInDmg"

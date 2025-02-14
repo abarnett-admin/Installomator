@@ -1,3 +1,4 @@
+
 secretive)
     name="Secretive"
     type="zip"
@@ -5,4 +6,3 @@ secretive)
     appNewVersion=$(versionFromGit maxgoedjen secretive)
     expectedTeamID="Z72PRUAWF6"
     ;;
-    

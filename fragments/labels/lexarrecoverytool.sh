@@ -1,3 +1,4 @@
+
 lexarrecoverytool)
     name="Lexar Recovery Tool"
     type="appInDmgInZip"

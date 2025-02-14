@@ -1,3 +1,4 @@
+
 cinema4d)
     name="Cinema 4D"
     type="dmg"
@@ -13,4 +14,3 @@ cinema4d)
     CLIArguments=( --mode unattended --unattendedmodeui none )
     expectedTeamID="4ZY22YGXQG"
     ;;
-

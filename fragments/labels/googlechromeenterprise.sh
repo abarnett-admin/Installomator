@@ -1,3 +1,4 @@
+
 googlechromeenterprise)
     name="Google Chrome"
     type="pkg"

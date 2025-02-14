@@ -1,3 +1,4 @@
+
 marathon2)
     name="Classic Marathon 2"
     type="dmg"

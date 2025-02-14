@@ -1,6 +1,8 @@
+
 microsoftpowerpoint)
     name="Microsoft PowerPoint"
     type="pkg"
+    continueBlocking="true"
     versionKey="CFBundleVersion"
     downloadURL=$(curl -s https://learn.microsoft.com/en-us/officeupdates/update-history-office-for-mac | grep -i "PowerPoint" | grep -o 'https://[^"]*' | grep "PowerPoint" | head -n 1)
     appNewVersion=$(basename "$downloadURL" | sed -E 's/^Microsoft_[^_]+_([0-9]+\.[0-9]+\.[0-9]+)_.*/\1/')

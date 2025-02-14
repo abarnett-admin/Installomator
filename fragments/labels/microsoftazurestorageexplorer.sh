@@ -1,3 +1,4 @@
+
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"

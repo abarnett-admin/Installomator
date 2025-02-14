@@ -1,3 +1,4 @@
+
 yubikeymanagerqt)
     name="YubiKey Manager"
     type="pkg"

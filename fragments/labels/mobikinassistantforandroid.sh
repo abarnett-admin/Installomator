@@ -1,3 +1,4 @@
+
 mobikinassistantforandroid)
     name="MobiKin Assistant for Android"
     type="dmg"

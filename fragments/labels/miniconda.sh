@@ -1,3 +1,4 @@
+
 miniconda)
     type="pkg"
 	packageID="io.continuum.pkg.prepare_installation io.continuum.pkg.run_installation io.continuum.pkg.pathupdate"

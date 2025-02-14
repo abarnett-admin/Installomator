@@ -1,3 +1,4 @@
+
 duckduckgo)
     name="DuckDuckGo"
     type="dmg"

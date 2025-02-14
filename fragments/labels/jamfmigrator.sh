@@ -1,3 +1,4 @@
+
 jamfmigrator)
     name="jamf-migrator"
     type="zip"

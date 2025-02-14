@@ -1,3 +1,4 @@
+
 libericajdk17ltsfull)
     name="Liberica JDK 17 Full LTS"
     type="pkg"

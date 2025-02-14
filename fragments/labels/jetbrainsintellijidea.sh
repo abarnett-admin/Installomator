@@ -1,3 +1,4 @@
+
 jetbrainsintellijidea)
     name="IntelliJ IDEA"
     type="dmg"

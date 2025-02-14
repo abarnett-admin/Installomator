@@ -1,3 +1,4 @@
+
 sketchupviewer)
     name="SketchUpViewer"
     type="dmg"

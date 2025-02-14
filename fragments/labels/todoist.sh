@@ -1,3 +1,4 @@
+
 todoist)
     name="Todoist"
     type="dmg"

@@ -1,3 +1,4 @@
+
 clickshare)
     name="ClickShare"
     type="appInDmgInZip"

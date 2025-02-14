@@ -1,3 +1,4 @@
+
 xmenu)
     name="XMenu"
     type="zip"
@@ -5,4 +6,3 @@ xmenu)
     appNewVersion="$(echo $downloadURL | sed -E 's/.*\/([0-9.]*)\/.*/\1/g')"
     expectedTeamID="679S2QUWR8"
     ;;
-

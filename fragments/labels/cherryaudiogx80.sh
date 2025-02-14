@@ -1,3 +1,4 @@
+
 cherryaudiogx80)
     name="GX-80"
     type="pkg"

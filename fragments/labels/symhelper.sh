@@ -1,3 +1,4 @@
+
 symhelper)
     name="SYM-Helper"
     type="zip"
@@ -5,4 +6,3 @@ symhelper)
     appNewVersion="$(versionFromGit setup-your-mac SYM-Helper)"
     expectedTeamID="PS2F6S478M"
     ;;
-

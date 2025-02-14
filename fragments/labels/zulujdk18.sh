@@ -1,3 +1,4 @@
+
 zulujdk18)
     name="Zulu JDK 18"
     type="pkgInDmg"

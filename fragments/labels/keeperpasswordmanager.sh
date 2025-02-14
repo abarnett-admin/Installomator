@@ -1,3 +1,4 @@
+
 keeperpasswordmanager)
     name="Keeper Password Manager"
     type="dmg"

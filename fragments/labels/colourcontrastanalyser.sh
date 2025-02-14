@@ -1,3 +1,4 @@
+
 colourcontrastanalyser)
     name="Colour Contrast Analyser"
     type="dmg"

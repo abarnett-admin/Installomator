@@ -1,3 +1,4 @@
+
 zulip)
     name="Zulip"
     type="dmg"

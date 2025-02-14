@@ -1,3 +1,4 @@
+
 onlyofficedesktop)
     name="ONLYOFFICE"
     type="dmg"

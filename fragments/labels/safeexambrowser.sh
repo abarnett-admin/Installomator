@@ -1,3 +1,4 @@
+
 safeexambrowser)
     name="Safe Exam Browser"
     type="dmg"

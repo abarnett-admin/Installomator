@@ -1,3 +1,4 @@
+
 splashtopbusiness)
     name="Splashtop Business"
     type="pkgInDmg"

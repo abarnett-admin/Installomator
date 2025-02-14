@@ -1,3 +1,4 @@
+
 musescore)
     name="MuseScore 4"
     type="dmg"

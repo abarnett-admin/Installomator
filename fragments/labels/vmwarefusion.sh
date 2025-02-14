@@ -1,3 +1,4 @@
+
 vmwarefusion)
     name="VMware Fusion"
     type="dmg"

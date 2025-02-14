@@ -1,3 +1,4 @@
+
 cluefull)
     #For companies and schools
     name="Clue"

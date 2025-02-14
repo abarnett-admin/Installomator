@@ -1,3 +1,4 @@
+
 cherryaudiowurlybird140b)
     name="Wurlybird 140B"
     type="pkg"
@@ -5,4 +6,12 @@ cherryaudiowurlybird140b)
     appNewVersion="$(curl -fs https://cherryaudio.com/products/wurlybird140b/version-history | grep -A 6 "info" | grep -Eo "([0-9]+(\.[0-9]+)+)" | head -1 | xargs)"
     downloadURL="https://store.cherryaudio.com/downloads/wurlybird140b-macos-installer?file=Wurlybird140B.pkg"
     expectedTeamID="A2XFV22B2X"
+     ;;
+chromeremotedesktop)
+    name="chromeremotedesktop"
+    type="pkgInDmg"
+    packageID="com.google.pkg.ChromeRemoteDesktopHost"
+    downloadURL="https://dl.google.com/chrome-remote-desktop/chromeremotedesktop.dmg"
+    appNewVersion=""
+    expectedTeamID="EQHXZ8M8AV"
     ;;

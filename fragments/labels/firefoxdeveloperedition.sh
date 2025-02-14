@@ -1,3 +1,4 @@
+
 firefoxdeveloperedition)
     name="Firefox Developer Edition"
     type="dmg"

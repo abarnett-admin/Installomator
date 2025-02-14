@@ -1,3 +1,4 @@
+
 polleverywhere)
     name="Poll Everywhere"
     type="dmg"

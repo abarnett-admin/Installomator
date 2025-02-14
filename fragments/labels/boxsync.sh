@@ -1,3 +1,4 @@
+
 boxsync)
     name="Box Sync"
     type="dmg"

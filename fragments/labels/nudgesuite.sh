@@ -1,3 +1,4 @@
+
 nudgesuite)
     name="Nudge Suite"
     appName="Nudge.app"

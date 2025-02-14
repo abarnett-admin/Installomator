@@ -1,3 +1,4 @@
+
 protonvpn)
     name="ProtonVPN"
     type="dmg"

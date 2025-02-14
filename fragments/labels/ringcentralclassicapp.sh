@@ -1,3 +1,4 @@
+
 ringcentralclassicapp)
     name="Glip"
     type="dmg"

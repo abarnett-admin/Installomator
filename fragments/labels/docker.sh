@@ -1,3 +1,4 @@
+
 docker)
     name="Docker"
     type="dmg"

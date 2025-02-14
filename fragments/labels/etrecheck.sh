@@ -1,3 +1,4 @@
+
 etrecheck)
     # credit: @dvsjr macadmins slack
     name="EtreCheckPro"

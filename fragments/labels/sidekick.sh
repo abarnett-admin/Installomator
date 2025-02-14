@@ -1,3 +1,4 @@
+
 sidekick)
     name="Sidekick"
     type="dmg"

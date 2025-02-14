@@ -1,3 +1,4 @@
+
 zoomclient)
     name="zoom.us"
     type="pkg"
@@ -8,7 +9,7 @@ zoomclient)
        downloadURL="https://zoom.us/client/latest/Zoom.pkg?archType=arm64"
     fi
     expectedTeamID="BJ4HAAB9B3"
-    #appNewVersion=$(curl -is "https://beta2.communitypatch.com/jamf/v1/ba1efae22ae74a9eb4e915c31fef5dd2/patch/zoom.us" | grep currentVersion | tr ',' '\n' | grep currentVersion | cut -d '"' -f 4) # Does not match packageID
+    appNewVersion=$(curl -s "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0061222" | grep -A 20 "<h2[^>]*>Released<\/h2>" | grep -A 10 "macOS" | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+ \([0-9]+\)' | head -n 2 | tail -n 1)
     blockingProcesses=( zoom.us )
     #blockingProcessesMaxCPU="5"
     ;;

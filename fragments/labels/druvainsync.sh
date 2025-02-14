@@ -1,3 +1,4 @@
+
 druvainsync)
     name="Druva inSync"
     type="pkgInDmg"

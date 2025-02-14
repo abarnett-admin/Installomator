@@ -1,3 +1,4 @@
+
 launchbar)
     name="LaunchBar"
     type="dmg"

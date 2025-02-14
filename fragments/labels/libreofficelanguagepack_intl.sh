@@ -1,3 +1,4 @@
+
 libreofficelanguagepack_intl)
     name="LibreOffice Language Pack"
     # appName="LibreOffice.app"
@@ -28,7 +29,7 @@ libreofficelanguagepack_intl)
     #     printlog "Download not found for '$userLanguage', exiting."
     #     exit
     # fi
-    # appNewVersion=$(curl -sf $releaseURL | grep -m 1 "_langpack_$userLanguage.dmg" | sed "s|.*LibreOffice_\(.*\)_MacOS.*|\\1|")
+    # appNewVersion=$(curl -sf $releaseURL | grep -m 1 "_langpack_$userLanguage.dmg" | sed "s|.*LibreOffice_\(.*\)_MacOS.*|\1|")
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://download.documentfoundation.org/libreoffice/stable/"$appNewVersion"/mac/aarch64/LibreOffice_"$appNewVersion"_MacOS_aarch64_langpack_"$userLanguage".dmg"
     elif [[ $(arch) == "i386" ]]; then

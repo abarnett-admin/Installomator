@@ -1,3 +1,4 @@
+
 googledrivebackupandsync)
     name="Backup and Sync"
     type="dmg"

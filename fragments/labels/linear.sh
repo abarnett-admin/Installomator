@@ -1,3 +1,4 @@
+
 linear)
     name="Linear"
     type="dmg"
@@ -12,4 +13,3 @@ linear)
     appName="Linear.app"
     blockingProcesses=( "Linear" )
     ;;
-    

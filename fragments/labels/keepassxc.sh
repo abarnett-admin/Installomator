@@ -1,3 +1,4 @@
+
 keepassxc)
     name="KeePassXC"
     type="dmg"

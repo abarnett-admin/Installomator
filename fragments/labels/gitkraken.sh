@@ -1,3 +1,4 @@
+
 gitkraken)
     name="gitkraken"
     type="dmg"

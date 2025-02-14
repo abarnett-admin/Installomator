@@ -1,3 +1,4 @@
+
 rocketchat)
     name="Rocket.Chat"
     type="dmg"

@@ -1,3 +1,4 @@
+
 finaldraft12)
     name="Final Draft 12"
     type="appInDmgInZip"

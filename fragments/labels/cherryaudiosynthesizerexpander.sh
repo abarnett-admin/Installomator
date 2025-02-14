@@ -1,3 +1,4 @@
+
 cherryaudiosynthesizerexpander)
     name="Synthesizer Expander Module"
     type="pkg"

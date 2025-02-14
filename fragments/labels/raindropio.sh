@@ -1,3 +1,4 @@
+
 raindropio)
     name="Raindrop.io"
     type="dmg"

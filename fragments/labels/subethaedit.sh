@@ -1,3 +1,4 @@
+
 subethaedit)
     name="SubEthaEdit"
     # Home: https://github.com/subethaedit/SubEthaEdit

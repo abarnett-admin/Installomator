@@ -1,3 +1,4 @@
+
 ibarcoder)
     name="iBarcoder"
     type="dmg"
