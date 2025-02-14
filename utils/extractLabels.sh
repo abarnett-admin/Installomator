@@ -3,9 +3,9 @@ endlabel_re='^(    |\t);;$'
 
 label_dir="fragments/labels"
 # add labels.txt file location here to update the labels
-labels_file="/Users/andrewbarnett/Documents/GitHub/Installomator/Labels.txt"
+labels_file=""
 # add Installomator.sh file location here to update the labels
-installomatorScript="/Users/andrewbarnett/Documents/GitHub/Installomator/InstallomatorCustom.sh"
+installomatorScript=""
 
 IFS=$'\n'
 
