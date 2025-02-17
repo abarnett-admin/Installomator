@@ -348,8 +348,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.45"
-VERSIONDATE="2025-02-17"
+VERSION="12.46"
+VERSIONDATE="2025-02-18"
 
 # MARK: Functions
 
@@ -5340,7 +5340,7 @@ jamfreenroller)
     name="ReEnroller"
     type="zip"
     downloadURL=$(downloadURLFromGit jamf ReEnroller)
-    #appNewVersion=$(versionFromGit jamf ReEnroller)
+    appNewVersion=$(versionFromGit jamf ReEnroller)
     expectedTeamID="PS2F6S478M"
     ;;
 jamovi)
