@@ -348,8 +348,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.44"
-VERSIONDATE="2025-02-15"
+VERSION="12.45"
+VERSIONDATE="2025-02-17"
 
 # MARK: Functions
 
@@ -3398,13 +3398,11 @@ clevershare2)
     ;;
 clickshare)
     name="ClickShare"
-    type="appInDmgInZip"
-    clickshareAppInfo="$( curl -fs "https://www.barco.com/bin/barco/tde/details.json?fileNumber=R3306192&tdeType=3" )"
-    appNewVersion="$( expr $( getJSONValue "$clickshareAppInfo" majorVersion ) + 1 - 1 )"
-    appNewVersion+=".$( expr $( getJSONValue "$clickshareAppInfo" minorVersion ) + 1 - 1 )"
-    appNewVersion+=".$( expr $( getJSONValue "$clickshareAppInfo" patchVersion ) + 1 - 1 )"
-    appNewVersion+="-b$( expr $( getJSONValue "$clickshareAppInfo" buildVersion ) + 1 - 1 )"
-    downloadURL="$( getJSONValue "$( curl -fs "https://www.barco.com/bin/barco/tde/downloadUrl.json?fileNumber=R3306192&tdeType=3" )" downloadUrl )"
+    type="zip"
+    json_feed=$(curl -fsL "https://assets.cloud.barco.com/clickshare/release/release.mac")
+    appNewVersion=$(getJSONValue "${json_feed}" 'version')
+    file_name=$(getJSONValue "${json_feed}" 'name')
+    downloadURL="https://assets.cloud.barco.com/clickshare/release/${file_name}"
     expectedTeamID="P6CDJZR997"
     ;;
 clickup)
@@ -8406,8 +8404,8 @@ santa)
 keyaccess)
     name="KeyAccess"
     type="pkg"
-    downloadStore="$(curl -s "http://www.sassafras.com/client-download/" | tr '>' '\n')"
-    downloadURL="$(echo "$downloadStore" | grep "https.*ksp-client.*pkg" | cut -d '"' -f 2)"
+    downloadStore="$(curl -s "https://www.sassafras.com/client-download/" | tr '>' '\n')"
+    downloadURL=$(echo "$downloadStore" | grep -oE 'https://www.sassafras.com/links/ksp-client-[0-9]+-latest.pkg' | head -n 1)
     appNewVersion="$(echo "$downloadStore" | grep "KeyAccess.*for Mac" | cut -d ' ' -f 2)"
     expectedTeamID="7Z2KSDFMVY"
     BLOCKING_PROCESS_ACTION=ignore

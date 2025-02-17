@@ -2,9 +2,9 @@
 keyaccess)
     name="KeyAccess"
     type="pkg"
-    downloadStore="$(curl -s "http://www.sassafras.com/client-download/" | tr '>' '
+    downloadStore="$(curl -s "https://www.sassafras.com/client-download/" | tr '>' '
 ')"
-    downloadURL="$(echo "$downloadStore" | grep "https.*ksp-client.*pkg" | cut -d '"' -f 2)"
+    downloadURL=$(echo "$downloadStore" | grep -oE 'https://www.sassafras.com/links/ksp-client-[0-9]+-latest.pkg' | head -n 1)
     appNewVersion="$(echo "$downloadStore" | grep "KeyAccess.*for Mac" | cut -d ' ' -f 2)"
     expectedTeamID="7Z2KSDFMVY"
     BLOCKING_PROCESS_ACTION=ignore
