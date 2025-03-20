@@ -348,8 +348,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.47"
-VERSIONDATE="2025-02-21"
+VERSION="12.48"
+VERSIONDATE="2025-03-20"
 
 # MARK: Functions
 
@@ -2510,7 +2510,7 @@ backgroundmusic)
     ;;
 backgrounds)
     name="Backgrounds"
-    type="zip"
+    type="pkg"
     downloadURL="$(downloadURLFromGit SAP backgrounds)"
     appNewVersion="$(versionFromGit SAP backgrounds)"
     expectedTeamID="7R5ZEU67FQ"
@@ -2547,13 +2547,13 @@ bartender)
 basecamp3)
     name="Basecamp 3"
     type="dmg"
-    if [[ $(/usr/bin/arch) == "arm64" ]]; then 
+    if [[ $(/usr/bin/arch) == "arm64" ]]; then
         downloadURL="https://bc3-desktop.s3.amazonaws.com/mac_arm64/basecamp3_arm64.dmg"
     else
         downloadURL="https://bc3-desktop.s3.amazonaws.com/mac/basecamp3.dmg"
     fi
     expectedTeamID="2WNYUYRS7G"
-    appName="Basecamp 3.app"
+    appName="Basecamp.app"
     ;;
 baseline-nodaemon)
     #Baseline by @BigMacAdmin and Second Son Consulting
@@ -3651,9 +3651,19 @@ darktable)
     # credit: Søren Theilgaard (@theilgaard)
     name="darktable"
     type="dmg"
-    downloadURL=$(downloadURLFromGit darktable-org darktable)
+    # Detect macOS architecture
+    arch=$(uname -m)
+    if [[ "$arch" == "arm64" ]]; then
+        archSuffix="arm64"
+    else
+        archSuffix="x86_64"
+    fi
+    # Fetch the latest release assets from GitHub and filter based on architecture
+    downloadURL=$(curl -sfL "https://api.github.com/repos/darktable-org/darktable/releases/latest" | \
+        awk -F '"' "/browser_download_url/ && /$archSuffix\.dmg/ { print \$4; exit }")
+    # Get the latest version from GitHub
     appNewVersion=$(versionFromGit darktable-org darktable)
-    expectedTeamID="85Q3K4KQRY"
+    expectedTeamID=""
     ;;
 daylite)
     name="Daylite"
@@ -4793,7 +4803,7 @@ gotiengviet)
     ;;
 gotomeeting)
     # credit: @matins
-    name="GoTo"
+    name="GoToMeeting"
     type="dmg"
     downloadURL="https://link.gotomeeting.com/latest-dmg"
     expectedTeamID="GFNFVT632V"
@@ -5022,12 +5032,7 @@ hype)
 hyper)
     name="Hyper"
     type="dmg"
-    if [[ $(arch) == i386 ]]; then
-      archiveName="mac-x64.dmg"
-    elif [[ $(arch) == arm64 ]]; then
-      archiveName="mac-arm64.dmg"
-    fi
-    downloadURL=$(downloadURLFromGit vercel hyper )
+
     appNewVersion=$(versionFromGit vercel hyper)
     expectedTeamID="JW6Y669B67"
     ;;
@@ -5313,11 +5318,12 @@ jamfcpr)
     expectedTeamID="PS2F6S478M"
     versionKey="CFBundleShortVersionString"
     ;;
-jamfmigrator)
-    name="jamf-migrator"
+jamfmigrator|\
+jamfreplicator)
+    name="Replicator"
     type="zip"
-    downloadURL=$(downloadURLFromGit jamf JamfMigrator)
-    appNewVersion=$(versionFromGit jamf JamfMigrator)
+    downloadURL=$(downloadURLFromGit jamf Replicator)
+    appNewVersion=$(versionFromGit jamf Replicator)
     expectedTeamID="PS2F6S478M"
     ;;
 jamfpppcutility)
@@ -7327,7 +7333,8 @@ nweasecuretestingbrowser)
     expectedTeamID="SRTXZJ7SQ3"
     ;;
 
-obs)
+obs|\
+obsbotwebcam)
     name="OBS"
     type="dmg"
     if [[ $(arch) == "arm64" ]]; then
@@ -7342,13 +7349,25 @@ obs)
     blockingProcesses=( "OBS Studio" )
     expectedTeamID="2MMRE5MTB8"
     ;;
-obsbotcenter|\
-obsbotwebcam)
-    name="OBSBOT_Center"
-    type="dmg"
-    downloadURL=$(curl -fsL "https://www.obsbot.com/download/obsbot-tiny-series" | xmllint --html --xpath 'string(//a[contains(@href,"Obsbot_Center_OA_E_MacOS")]/@href)' - 2> /dev/null)
-    appNewVersion=$(curl -fsL "https://www.obsbot.com/download/obsbot-tiny-series" | xmllint --html --xpath 'substring-after(substring-before(string(//a[contains(@href,"Obsbot_Center_OA_E_MacOS")]/@href),"_release"),"MacOS_")' - 2> /dev/null)
-    expectedTeamID="7GJANK3822"
+obsbotcenter)
+name="OBSBOT_Center"
+type="dmg"
+
+# Extract downloadURL
+downloadURL=$(curl -fsL "https://www.obsbot.com/download/obsbot-tiny-series" | grep -o 'url_mac:"https:\\u002F\\u002F[^"]*' | head -n 1 | sed -E 's/url_mac:"https:\\u002F\\u002F(.*)/https:\/\/\1/' | sed 's/\\u002F/\//g')
+
+# Extract appNewVersion
+appNewVersion=$(curl -fsL "https://www.obsbot.com/download/obsbot-tiny-series" | xmllint --html --xpath 'string(//div[contains(@class,"pl-title")][contains(text(),"macOS")])' - 2>/dev/null | sed -E 's/.*macOS v([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+
+# If appNewVersion is not found, extract it from the download URL as a fallback
+if [[ -z "$appNewVersion" ]]; then
+  appNewVersion=$(echo "$downloadURL" | sed -E 's/.*_MacOS_([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)_release.*/\1/')
+fi
+
+# Add the version to the download URL
+downloadURL="${downloadURL//_MacOS_[^_]*_release/_MacOS_${appNewVersion}_release}"
+
+expectedTeamID="7GJANK3822"
     ;;
 obsidian)
     # credit: Søren Theilgaard (@theilgaard)
@@ -7996,7 +8015,8 @@ pulsar)
 pymol)
     name="PyMOL"
     type="dmg"
-    downloadURL=$(curl -s -L "https://pymol.org/" | grep -m 1 -Eio 'href="https://pymol.org/installers/PyMOL-(.*)-MacOS(.*).dmg"' | cut -c7- | sed -e 's/"$//')
+    downloadURL=$(curl -s -L "https://pymol.org/" | grep -oE 'href="([^"]*installers/PyMOL-[^"]*-MacOS[^"]*\.dmg)"' | cut -d'"' -f2 | head -1)
+    appNewVersion="$(echo "${downloadURL}" | awk -F'/' '{ print $NF }' | awk -F'[-_]' '{ print $2 }')"
     expectedTeamID="26SDDJ756N"
     ;;
 python)
@@ -8404,16 +8424,10 @@ santa)
 keyaccess)
     name="KeyAccess"
     type="pkg"
-    downloadStore="$(curl -s "https://www.sassafras.com/client-download/" | tr '>' '\n')"
-    downloadURL=$(echo "$downloadStore" | grep -oE 'https://www.sassafras.com/links/ksp-client-[0-9]+-latest.pkg' | head -n 1)
+    downloadStore="$(curl -sL "http://www.sassafras.com/client-download/" | tr '>' '\n')"
+    downloadURL="$(echo "$downloadStore" | grep "https.*ksp-client.*pkg" | cut -d '"' -f 2)"
     appNewVersion="$(echo "$downloadStore" | grep "KeyAccess.*for Mac" | cut -d ' ' -f 2)"
     expectedTeamID="7Z2KSDFMVY"
-    BLOCKING_PROCESS_ACTION=ignore
-    blockingProcesses=( NONE )
-    # Application is not installed in /Applications
-    appName="Library/KeyAccess/KeyAccess.app"
-    # Don't forget to at least set the host, or nothing will happen.
-    # defaults write /Library/Preferences/com.sassafras.KeyAccess host -string "host.name"
     ;;
 scaleft)
     name="ScaleFT"
@@ -9099,15 +9113,14 @@ surfdrive)
     name="SURFdrive"
     type="pkg"
 	if [[ $(arch) == "arm64" ]]; then
-		downloadURL=$(curl -fs https://servicedesk.surf.nl/wiki/display/WIKI/Desktop+client+login|grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep pkg | grep arm64)
-		appNewVersion=$(curl -fs https://servicedesk.surf.nl/wiki/display/WIKI/Desktop+client+login|grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep pkg | grep arm |cut -d- -f2)
+		downloadURL=$(curl -fs https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/74225443/Desktop+client+login|grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep pkg | grep arm64)
+		appNewVersion=$(curl -fs https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/74225443/Desktop+client+login|grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep pkg | grep arm |cut -d -f2)
     elif [[ $(arch) == "i386" ]]; then
-		downloadURL=$(curl -fs https://servicedesk.surf.nl/wiki/display/WIKI/Desktop+client+login|grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep pkg | grep x86)
-		appNewVersion=$(curl -fs https://servicedesk.surf.nl/wiki/display/WIKI/Desktop+client+login|grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep pkg | grep x86 |cut -d- -f2)
+		downloadURL=$(curl -fs https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/74225443/Desktop+client+login|grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep pkg | grep x86)
+		appNewVersion=$(curl -fs https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/74225443/Desktop+client+login|grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | grep pkg | grep x86|cut -d- -f2)
 	fi
     expectedTeamID="4AP2STM4H5"
     appName="surfdrive.app"
-    blockingProcesses=( "surfdrive" )
     ;;
 suspiciouspackage)
     name="Suspicious Package"
@@ -9845,7 +9858,7 @@ vivaldi)
     name="Vivaldi"
     type="tbz"
     downloadURL=$(curl -fsL "https://update.vivaldi.com/update/1.0/public/mac/appcast.xml" | xpath '//rss/channel/item[1]/enclosure/@url' 2>/dev/null  | cut -d '"' -f 2)
-    appNewVersion=$(curl -is "https://update.vivaldi.com/update/1.0/public/mac/appcast.xml" | grep sparkle:version | tr ',' '\n' | grep sparkle:version | cut -d '"' -f 4)
+    appNewVersion=$(curl -is "https://update.vivaldi.com/update/1.0/public/mac/appcast.xml" | grep -o '<sparkle:version>[^<]*' | sed 's/<sparkle:version>//')
     expectedTeamID="4XF3XNRN6Y"
     ;;
 vivi)

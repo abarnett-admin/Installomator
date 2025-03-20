@@ -1,8 +1,9 @@
 
-jamfmigrator)
-    name="jamf-migrator"
+jamfmigrator|\
+jamfreplicator)
+    name="Replicator"
     type="zip"
-    downloadURL=$(downloadURLFromGit jamf JamfMigrator)
-    appNewVersion=$(versionFromGit jamf JamfMigrator)
+    downloadURL=$(downloadURLFromGit jamf Replicator)
+    appNewVersion=$(versionFromGit jamf Replicator)
     expectedTeamID="PS2F6S478M"
     ;;
