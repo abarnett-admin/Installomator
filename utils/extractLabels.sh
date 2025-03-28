@@ -1,18 +1,16 @@
 #!/bin/zsh
 
+# Set the location of the labels folder
+label_dir=""
+# Set the location of the labels.txt file
+labels_file=""
+# Set the path to the Installomator script
+installomatorScript=""
+# Set the path to the log file (optional) or leave empty to disable logging
+log_file=""                 # Optional log file path (example: /var/log/extractLabels.log)
+
 label_re='^([a-z0-9\_-]*)(\)|\|\\)$' 
 endlabel_re='^(    |\t);;$'
-
-# Set the directory where the labels will be stored
-label_dir="/Users/andrewbarnett/Documents/GitHub/Installomator/fragments/labels"
-# Set the file where the labels will be stored
-labels_file="/Users/andrewbarnett/Documents/GitHub/Installomator/labels.txt"
-# Set the path to the Installomator script
-installomatorScript="/Users/andrewbarnett/Documents/GitHub/Installomator/InstallomatorCustom.sh"
-# Set the path to the log file (optional) 
-log_file="/var/log/extractLabels.log"
-
-
 
 IFS=$'\n'
 

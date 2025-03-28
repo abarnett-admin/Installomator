@@ -1,4 +1,4 @@
-basecamp |\
+basecamp|\
 basecamp3)
     name="Basecamp"
     type="dmg"
