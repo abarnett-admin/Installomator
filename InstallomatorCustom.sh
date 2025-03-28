@@ -348,8 +348,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.49"
-VERSIONDATE="2025-03-28"
+VERSION="12.50"
+VERSIONDATE="2025-03-29"
 
 # MARK: Functions
 
@@ -2549,7 +2549,7 @@ bartender)
     downloadURL="https://www.macbartender.com/B2/updates/B4Latest/Bartender%204.dmg"
     expectedTeamID="8DD663WDX4"
     ;;
-basecamp\|
+basecamp |\
 basecamp3)
     name="Basecamp"
     type="dmg"
