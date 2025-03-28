@@ -1,5 +1,6 @@
 
-obs)
+obs|\
+obsbotwebcam)
     name="OBS"
     type="dmg"
     if [[ $(arch) == "arm64" ]]; then

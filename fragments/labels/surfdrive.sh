@@ -1,3 +1,4 @@
+
 surfdrive)
     name="SURFdrive"
     type="pkg"
@@ -10,4 +11,5 @@ surfdrive)
 	fi
     expectedTeamID="4AP2STM4H5"
     appName="surfdrive.app"
+    blockingProcesses=( "surfdrive" )
     ;;

@@ -28,6 +28,7 @@ affinityphoto2
 affinitypublisher2
 aftermath
 aircall
+airflow
 airserver
 airtable
 airtame
@@ -94,7 +95,7 @@ balenaetcher
 balsamiqwireframes
 bambustudio
 bartender
-basecamp3
+basecamp
 baseline
 baseline-nodaemon
 basictex
@@ -137,6 +138,7 @@ camtasia2020
 camtasia2021
 camtasia2022
 camtasia2023
+camtasia2024
 camunda
 canva
 carboncopycloner
@@ -217,7 +219,9 @@ crashplansmb
 cricutdesignspace
 cryptomator
 crystalfetch
+cursorai
 cyberduck
+cycling74max
 cytoscape
 daisydisk
 dangerzone
@@ -229,6 +233,8 @@ dedoose
 deepl
 deezer
 defaultfolderx
+deon-cloud
+deon-onprem
 depnotify
 desktoppr
 detectxswift
@@ -257,6 +263,9 @@ duodevicehealth
 dymoconnectdesktop
 dynalist
 easeusdatarecoverywizard
+eastwestinstallationcenter
+eastwestopus
+eastwestplay
 easyfind
 eclipsetemurin11
 eclipsetemurin17
@@ -272,6 +281,7 @@ elgatocamerahub
 elgatostreamdeck
 emacs
 enteauth
+epicgameslauncher
 eposconnect
 escrowbuddy
 eshareosx
@@ -328,6 +338,7 @@ gephi
 gfxcardstatus
 gimp
 gimpdev
+githubcopilotforxcode
 githubdesktop
 gitkraken
 glpiagent
@@ -391,6 +402,7 @@ inmusicsoftwarecenter
 insomnia
 installomator
 installomator_theile
+installomatormate
 intellijideace
 ipswupdater
 ipvisionconnect
@@ -439,6 +451,7 @@ jumpdesktop
 jupyterlab
 kap
 karabinerelements
+kdrive
 keepassxc
 keeperpasswordmanager
 keepingyouawake
@@ -446,6 +459,7 @@ keka
 keyaccess
 keybase
 keyboardmaestro
+keyshot
 keyshot12
 keyshot12_2024
 keystoreexplorer
@@ -471,6 +485,7 @@ lifesize
 lightburn
 linear
 linearmouse
+livereplayer
 logioptions
 logitechoptions
 logitechoptionsplus
@@ -498,6 +513,7 @@ magicbullet
 mailmate
 mailtooutlook
 malwarebytes
+mamp
 marathon
 marathon2
 marathoninfinity
@@ -511,6 +527,7 @@ meistertask
 mendeleyreferencemanager
 menumeters
 merlinproject
+mestrenova
 microsoftautoupdate
 microsoftazuredatastudio
 microsoftazurestorageexplorer
@@ -603,6 +620,7 @@ nordlayer
 nordvpn
 notion
 nova
+nps-santa
 nudge
 nudgesuite
 nvivo
@@ -610,8 +628,8 @@ nvivo13
 nvivo14
 nweasecuretestingbrowser
 obs
-obsbotwebcam
 obsbotcenter
+obsbotwebcam
 obsidian
 odrive
 oktaverify
@@ -640,9 +658,11 @@ origin
 orion
 osquery
 ottomatic
+outputarcade
 outputhub
 outset
 overflow
+owncloud
 pacifist
 packages
 pandoc
@@ -707,6 +727,7 @@ realvncviewer
 reaper
 rectangle
 redcanarymacmonitor
+redgiant
 redshift
 reflector4
 relatel
@@ -740,6 +761,7 @@ rustdesk
 safeexambrowser
 salesforcecli
 santa
+sawgrassprintutility
 scaleft
 scapple
 scenebuilder
@@ -801,6 +823,7 @@ splashtopsos
 splashtopstreamer
 splice
 spotify
+sqldeveloper
 sqlitebrowser
 sqlpropostgres
 sqlprostudio
@@ -871,6 +894,10 @@ tidal
 todoist
 toggltrack
 tom4aconverter
+toonboomstoryboardpro2024
+topazgigapixel
+topazphoto
+topazvideo
 torbrowser
 tower
 transfer
@@ -880,6 +907,7 @@ trex
 tunnelbear
 tunnelblick
 tuple
+twingate
 typeface
 typinator
 typora

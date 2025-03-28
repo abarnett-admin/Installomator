@@ -1,7 +1,7 @@
 
 gotomeeting)
     # credit: @matins
-    name="GoTo"
+    name="GoToMeeting"
     type="dmg"
     downloadURL="https://link.gotomeeting.com/latest-dmg"
     expectedTeamID="GFNFVT632V"
