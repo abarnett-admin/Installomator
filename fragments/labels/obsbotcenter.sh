@@ -1,5 +1,6 @@
 
-obsbotcenter)
+obsbotcenter|\
+obsbotwebcam)
 name="OBSBOT_Center"
 type="dmg"
 

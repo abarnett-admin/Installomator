@@ -58,6 +58,7 @@ ape
 apparency
 appcleaner
 applenyfonts
+appleprovideoformats
 applesfarabic
 applesfcompact
 applesfmono
@@ -96,6 +97,7 @@ balsamiqwireframes
 bambustudio
 bartender
 basecamp
+basecamp3
 baseline
 baseline-nodaemon
 basictex
@@ -729,6 +731,7 @@ rectangle
 redcanarymacmonitor
 redgiant
 redshift
+redshiftlite
 reflector4
 relatel
 remotedesktopmanagerenterprise
@@ -804,6 +807,7 @@ snagit2021
 snagit2022
 snagit2023
 snagit2024
+snapgene
 snapgeneviewer
 soapuiopensource
 sococo
@@ -952,6 +956,7 @@ vscodium
 vysor
 wacomdrivers
 wallyezflash
+warp
 wavescentral
 weasis
 webex
