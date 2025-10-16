@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 # Set the location of the labels folder
-label_dir=""
+label_dir="/Users/andrewbarnett/Documents/GitHub/InstallomatorTAMU/labels"
 # Set the location of the labels.txt file
-labels_file=""
+labels_file="/Users/andrewbarnett/Documents/GitHub/InstallomatorTAMU/labels.txt"
 # Set the path to the Installomator script
-installomatorScript=""
+installomatorScript="/Users/andrewbarnett/Documents/GitHub/InstallomatorTAMU/InstallomatorCustom.sh"
 # Set the path to the log file (optional) or leave empty to disable logging
 log_file=""                 # Optional log file path (example: /var/log/extractLabels.log)
 

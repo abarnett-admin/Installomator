@@ -17,5 +17,4 @@ garminexpress)
     appNewVersion="$(curl -sfL $garminfaqURL | tr '><' "
 " | grep "Garmin Express for Mac" | head -1 | awk 'sub(/.*Mac: */,""){f=1} f{if ( sub(/ *as of.*/,"") ) f=0; print}').0"
     expectedTeamID="72ES32VZUA"
-    appName="Garmin Express.app"
     ;;

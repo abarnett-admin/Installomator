@@ -12,6 +12,9 @@ microsoftonedrive)
      #appCustomVersion(){defaults read /Applications/nextcloud.app/Contents/Info.plist CFBundleShortVersionString | sed -E 's/^([0-9.]*)git.*/\1/g'}
      appCustomVersion(){defaults read /Applications/OneDrive.app/Contents/Info.plist CFBundleVersion | sed -E 's/^([0-9]{2})([0-9]{3})(\.[0-9]{4}\.[0-9]{4})$/\1.\2\3/'}
     expectedTeamID="UBF8T346G9"
+    msAppID="ONDR18"
+    updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
+    updateToolArguments=( --install --apps "$msAppID" )
     # if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
     #     printlog "Running msupdate --list"
     #     "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list

@@ -1,7 +1,6 @@
 
-jamfmigrator|\
-jamfreplicator)
-    name="Replicator"
+jamfmigrator)
+    name="jamf-migrator"
     type="zip"
     downloadURL=$(downloadURLFromGit jamf Replicator)
     appNewVersion=$(versionFromGit jamf Replicator)

@@ -2,14 +2,19 @@
 microsoftcompanyportal)
     name="Company Portal"
     type="pkg"
-    continueBlocking="true"
-    downloadURL="https://go.microsoft.com/fwlink/?linkid=869655"
-    appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i location: | grep -o "/CompanyPortal_.*pkg" | sed -r 's/(.*)\.pkg/\1/g' | sed 's/[^0-9\.]//g')
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=853070"
     expectedTeamID="UBF8T346G9"
-    # if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
-    #     printlog "Running msupdate --list"
-    #     "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list
-    # fi
-    # updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
-    # updateToolArguments=( --install --apps IMCP01 )
+    msAppID="IMCP01"
+    updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
+    updateToolArgs=( --install --apps "$msAppID" )
+
+    # Optional: show what msupdate knows about
+    if [[ -x "$updateTool" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
+        printlog "Running msupdate --list"
+        # capture but don't fail the flow if list fails
+        updatable=$("$updateTool" --list 2>/dev/null) || updatable=""
+        if [[ -n "$updatable" ]]; then
+            printlog "$updatable"
+        fi
+    fi
     ;;
