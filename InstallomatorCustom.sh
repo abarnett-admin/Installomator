@@ -350,8 +350,8 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 
-VERSION="12.73"
-VERSIONDATE="2025-10-15"
+VERSION="12.74"
+VERSIONDATE="2025-10-16"
 
 # MARK: Functions
 
@@ -6846,8 +6846,8 @@ microsoftpowerpointreset)
     downloadURL="https://office-reset.com"$(curl -fs https://office-reset.com/macadmins/ | grep -o -i "href.*\".*\"*PowerPoint_Reset.*.pkg" | cut -d '"' -f2)
     expectedTeamID="QGS93ZLCU7"
     ;;
-microsoftremotedesktop)
-    name="Microsoft Remote Desktop"
+microsoftwindowsapp)
+    name="Windows App"
     type="pkg"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=868963"
     #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.remotedesktop.standalone"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
